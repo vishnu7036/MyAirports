@@ -38,7 +38,7 @@ public class SignupTest {
         landingPage.clickOnLoginOrSignup();
     }
 
-    @When("the user navigates to the Login page")
+    @And("the user navigates to the Login page")
     public void the_user_navigates_to_the_login_page() {
         loginPage.verifyLoginPage();
     }
@@ -49,7 +49,7 @@ public class SignupTest {
         loginPage.clickOnSignUpBtn();
     }
 
-    @Then("^the user is prompted to enter their (.*), (.*), (.*), and (.*)$")
+    @And("^the user is prompted to enter their (.*), (.*), (.*), and (.*)$")
     public void the_user_is_prompted_to_enter_their_mind_graph_vishnu_g_mind_graph_com_and_mind(String firstName, String lastName, String email, String password) throws InterruptedException {
         loginPage.clickOnSubmitButton();
         landingPage.loginPage().signupPage().enterFirstName(firstName);
