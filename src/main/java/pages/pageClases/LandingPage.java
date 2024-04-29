@@ -12,15 +12,16 @@ public class LandingPage extends MobileUtils implements LandingPageLoc {
         this._driver = driver;
     }
 
-    public void clickOnLoginOrSignup(){
-        waitForElementVisibility(btnLoginOrSignup,"Login button",120);
+    public void clickOnLoginOrSignup() {
+        waitForElementVisibility(btnLoginOrSignup, "Login button", 120);
         click(btnLoginOrSignup, "Login or Signup button");
     }
 
     public void clickOnGuest() {
         click(btnGuest, "Guest Button");
     }
-    public LoginPage loginPage(){
+
+    public LoginPage loginPage() {
         return new LoginPage(_driver);
     }
 

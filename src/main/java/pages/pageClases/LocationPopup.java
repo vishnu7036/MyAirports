@@ -21,8 +21,8 @@ public class LocationPopup extends MobileUtils implements LocationPopupLoc {
                 this.clickOnWhileUsingTheAppButton();
             } else
                 System.out.println("Location Popup is not displayed");
-        }catch(Exception e){
-            System.out.println("Exception: "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
         }
 
     }

@@ -18,5 +18,4 @@ public class HomePage extends MobileUtils implements HomePageLoc {
         Assert.assertEquals(userName, "ioc");
     }
 
-
 }
