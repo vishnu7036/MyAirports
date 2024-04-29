@@ -1,5 +1,5 @@
 Feature: Validating Login Functionality
-
+  @login
   Scenario Outline: Verify Successful Login with Valid Credentials
     Given the My Airports application is opened
     When the user clicks on the login button

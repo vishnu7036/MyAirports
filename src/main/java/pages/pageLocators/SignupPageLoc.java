@@ -8,7 +8,7 @@ public interface SignupPageLoc {
     }
 
     default By getLocatorForButton(String loc) {
-        return By.xpath(String.format("//*[contains(@text,'%s')]"));
+        return By.xpath(String.format("//*[contains(@text,'%s')]",loc));
     }
 
     By ddMalaysia = By.xpath("//*[@text='Malaysia']/..");

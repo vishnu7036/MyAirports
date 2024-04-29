@@ -1,6 +1,8 @@
 package utils;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,9 +20,37 @@ public class MobileUtils {
         this._driver = driver;
     }
 
-    public void waitForElementVisibility(By element, String elementName, int timeOut) {
+    public void scrollUp() {
+        int width = _driver.manage().window().getSize().getWidth();
+        int height = _driver.manage().window().getSize().getHeight();
+        int centerX = width / 2;
+        int centerY = height / 2;
+        // Calculate the scroll distance as a fraction of the screen height
+        int scrollDistance = (int) (height * 0.4); // Adjust this value as needed
+        TouchAction touchAction = new TouchAction(_driver);
+        touchAction.longPress(PointOption.point(centerX, centerY))
+                .moveTo(PointOption.point(centerX, centerY - scrollDistance))
+                .release()
+                .perform();
+    }
+
+    public void scrollDown() {
+        int width = _driver.manage().window().getSize().getWidth();
+        int height = _driver.manage().window().getSize().getHeight();
+        int centerX = width / 2;
+        int centerY = height / 2;
+        // Calculate the scroll distance as a fraction of the screen height
+        int scrollDistance = (int) (height * 0.4); // Adjust this value as needed
+        TouchAction touchAction = new TouchAction(_driver);
+        touchAction.longPress(PointOption.point(centerX, centerY))
+                .moveTo(PointOption.point(centerX, centerY + scrollDistance)) // Move down
+                .release()
+                .perform();
+    }
+
+    public void waitForElementVisibility(By locator, String elementName, int timeOut) {
         WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(timeOut));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         System.out.println(elementName + "element is visible");
     }
 
@@ -42,27 +72,9 @@ public class MobileUtils {
     }
 
     public void click(By locator, String elementName) {
-        try {
-            WebElement element = _driver.findElement(locator);
-            element.click();
-            System.out.println("Clicked on '" + elementName + "' button successfully.");
-        } catch (Exception e) {
-            System.err.println("Failed to click on '" + elementName + "' button. Exception: " + e.getMessage());
-        }
-    }
-
-    public void scrollIntoView(By locator, String elementName) {
-        try {
-            JavascriptExecutor js = (JavascriptExecutor) _driver;
-            WebElement element = _driver.findElement(locator);
-            waitForElementVisibility(locator, elementName);
-            js.executeScript("arguments[0].scrollIntoView()", element);
-            System.out.println("Scrolled into view of '" + elementName + "'.");
-        } catch (NoSuchElementException e) {
-            System.err.println("'" + elementName + "' element not found: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Error occurred while scrolling into view of '" + elementName + "': " + e.getMessage());
-        }
+        WebElement element = _driver.findElement(locator);
+        element.click();
+        System.out.println("Clicked on '" + elementName + "' button successfully.");
     }
 
     public void sendKeys(By locator, String txt) {
@@ -75,14 +87,11 @@ public class MobileUtils {
         waitForElementVisibility(locator, elementName);
         WebElement ele = _driver.findElement(locator);
         ele.click();
-        Thread.sleep(3000);
-//        ele.clear();
-        Thread.sleep(10000);
-        sendKeys(locator, txt);
-        Thread.sleep(3000);
+        ele.sendKeys(txt);
         System.out.println("Entered text '" + txt + "' into '" + elementName + "'.");
     }
-    public void hideKeybord(){
+
+    public void hideKeybord() {
         _driver.hideKeyboard();
     }
 }

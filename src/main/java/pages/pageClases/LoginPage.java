@@ -17,8 +17,15 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
         this._driver = driver;
     }
 
+    public void verifyLoginPage() {
+        waitForElementVisibility(lblLogin, "Login Page Heading");
+        boolean ele = _driver.findElement(lblLogin).isDisplayed();
+        Assert.assertTrue(ele, "Login Page is not displayed");
+    }
+
     public void clickOnSignUpBtn() {
-        scrollIntoView(btnSignup, "Sign Up button");
+        verifyLoginPage();
+        scrollUp();
         click(btnSignup, "Sign Up button");
     }
 
@@ -53,12 +60,6 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
 
     public void clickOnBackButton() {
         new CommonFunctions(_driver).clickOnBackIcon();
-    }
-
-    public void verifyLoginPage() {
-        waitForElementVisibility(lblLogin, "Login Page Heading");
-        boolean ele = _driver.findElement(lblLogin).isDisplayed();
-        Assert.assertTrue(ele, "Login Page is not displayed");
     }
 
     public HomePage homePage() {

@@ -20,34 +20,19 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
 
     public void enterFirstName(String firstName) throws InterruptedException {
         enterText(getLocatorForText("First Name"), firstName, "First Name text field");
-        WebElement ele = _driver.findElement(getLocatorForText("First Name"));
-        ele.click();
-        Thread.sleep(2000);
-        ele.sendKeys(firstName);
     }
 
     public void enterLastName(String lastName) throws InterruptedException {
-//        enterText(getLocatorForText("Last Name"), lastName, "Last Name text field");
-        WebElement ele = _driver.findElement(getLocatorForText("Last Name"));
-        ele.click();
-        Thread.sleep(2000);
-        ele.sendKeys(lastName);
+        enterText(getLocatorForText("Last Name"), lastName, "Last Name text field");
     }
 
     public void enterEmailID(String emailID) throws InterruptedException {
-//        enterText(getLocatorForText("Email ID"), emailID, "Email ID text field");
-        WebElement ele = _driver.findElement(getLocatorForText("Email ID"));
-        ele.click();
-        Thread.sleep(2000);
-        ele.sendKeys(emailID);
+        enterText(getLocatorForText("Email ID"), emailID, "Email ID text field");
     }
 
     public void enterPassword(String password) throws InterruptedException {
-//        enterText(getLocatorForText("Password"), password, "Password text field");
-        WebElement ele = _driver.findElement(getLocatorForText("Password"));
-        ele.click();
-        Thread.sleep(2000);
-        ele.sendKeys(password);
+       _driver.hideKeyboard();
+        enterText(getLocatorForText("Password"), password, "Password text field");
     }
 
     public void clickOnMalaysiaDropdown() {
@@ -55,6 +40,7 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
     }
 
     public void clickOnCreateAccountBtn() {
+        _driver.hideKeyboard();
         click(getLocatorForButton("CREATE ACCOUNT"), "Create Account button");
     }
 

@@ -1,5 +1,6 @@
 Feature: User Signup Process
 
+  @signup
   Scenario Outline: Signup with Valid Information
     Given My Airports application is opened
     When the user clicks on the login or Signup button
