@@ -4,9 +4,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import pages.pageClases.LandingPage;
-import pages.pageClases.LoginPage;
-import pages.pageClases.SignupPage;
+import pages.pageClasses.LandingPage;
+import pages.pageClasses.LoginPage;
+import pages.pageClasses.SignupPage;
 
 import java.net.MalformedURLException;
 

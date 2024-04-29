@@ -1,4 +1,4 @@
-package pages.pageClases;
+package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.Assert;

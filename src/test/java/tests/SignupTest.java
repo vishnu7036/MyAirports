@@ -2,8 +2,8 @@ package tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.pageClases.HomePage;
-import pages.pageClases.LandingPage;
+import pages.pageClasses.HomePage;
+import pages.pageClasses.LandingPage;
 
 public class SignupTest extends BaseTest {
     private LandingPage landingPage;

@@ -1,7 +1,6 @@
-package pages.pageClases;
+package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebElement;
 import pages.pageLocators.SignupPageLoc;
 import utils.CommonFunctions;
 import utils.MobileUtils;

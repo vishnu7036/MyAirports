@@ -4,7 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import pages.pageClases.LandingPage;
+import pages.pageClasses.LandingPage;
 
 import java.net.MalformedURLException;
 

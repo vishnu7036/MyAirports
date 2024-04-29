@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import pages.pageClases.LandingPage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
