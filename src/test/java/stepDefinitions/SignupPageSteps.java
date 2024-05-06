@@ -10,7 +10,7 @@ import pages.pageClasses.SignupPage;
 
 import java.net.MalformedURLException;
 
-public class SignupTest {
+public class SignupPageSteps {
     private AndroidDriver _driver;
     private LandingPage landingPage;
     private LoginPage loginPage;
@@ -19,7 +19,7 @@ public class SignupTest {
     @Before("@signup")
     public void launchApp() throws MalformedURLException {
         System.out.println("before signup method is running");
-        _driver = BaseTest.getDriver();
+        _driver = BaseSteps.getDriver();
         landingPage = new LandingPage(_driver);
         loginPage = new LoginPage(_driver);
         signupPage = new SignupPage(_driver);
@@ -28,7 +28,7 @@ public class SignupTest {
     @After("@signup")
     public void closeApp() {
         System.out.println("after signup method is running");
-        BaseTest.closeDriver();
+        BaseSteps.closeDriver();
     }
 
     @Given("My Airports application is opened")

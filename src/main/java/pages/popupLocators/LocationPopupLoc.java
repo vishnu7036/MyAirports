@@ -1,4 +1,4 @@
-package pages.pageLocators;
+package pages.popupLocators;
 
 import org.openqa.selenium.By;
 

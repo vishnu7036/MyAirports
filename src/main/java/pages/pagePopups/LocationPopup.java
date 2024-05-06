@@ -1,7 +1,7 @@
-package pages.pageClasses;
+package pages.pagePopups;
 
 import io.appium.java_client.android.AndroidDriver;
-import pages.pageLocators.LocationPopupLoc;
+import pages.popupLocators.LocationPopupLoc;
 import utils.MobileUtils;
 
 public class LocationPopup extends MobileUtils implements LocationPopupLoc {

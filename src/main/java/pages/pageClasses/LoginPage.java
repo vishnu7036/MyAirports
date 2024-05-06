@@ -1,10 +1,9 @@
 package pages.pageClasses;
 
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.pageLocators.LoginPageLoc;
+import pages.pagePopups.LocationPopup;
 import utils.CommonFunctions;
 import utils.MobileUtils;
 
@@ -33,25 +32,19 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
         return new SignupPage(_driver);
     }
 
-    public void enterEmailID(String text) throws InterruptedException {
-        WebElement ele = _driver.findElement(txtEmail);
-        ele.click();
-        Thread.sleep(3000);
-        ele.sendKeys(text);
-        Thread.sleep(3000);
+    public void enterEmailID(String text) {
+        enterText(txtEmail, text, "email Id text field");
     }
 
-    public void enterPassword(String text) throws InterruptedException {
-        WebElement ele = _driver.findElement(txtPass);
-        ele.click();
-        Thread.sleep(2000);
-        ele.sendKeys(text);
+    public void enterPassword(String text) {
+        this.hideKeyboard();
+        enterText(txtPass, text, "password text field");
     }
 
     public void clickOnSubmitButton() {
+        hideKeyboard();
         click(btnSubmit, "Submit button");
         click(btnSubmit, "Submit button");
-//        _driver.findElement(btnSubmit).click();
     }
 
     public void hideKeyboard() {
@@ -68,11 +61,6 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
 
     public LocationPopup locationPopup() {
         return new LocationPopup(_driver);
-    }
-
-    public void clickOnSignup() {
-        TouchAction touchAction = new TouchAction(_driver);
-
     }
 
 }

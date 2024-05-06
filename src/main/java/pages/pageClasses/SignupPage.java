@@ -14,7 +14,7 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
     }
 
     public void verifySignupPageHeading() {
-        isElementPresent(lblHeading, "Signup Page");
+        isElementVisible(lblHeading, "Signup Page");
     }
 
     public void enterFirstName(String firstName) throws InterruptedException {
