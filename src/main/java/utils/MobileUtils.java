@@ -168,4 +168,7 @@ public class MobileUtils {
         String text = RandomStringUtils.randomAlphabetic(number);
         this.enterText(locator,text,elementName);
     }
+    public void enterRandomEmail(){
+//        RandomStringUtils.ra/
+    }
 }

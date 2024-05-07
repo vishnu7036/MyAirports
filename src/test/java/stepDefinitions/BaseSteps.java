@@ -21,12 +21,15 @@ public class BaseSteps {
     public final static int time_out = 60;
 
     public static AndroidDriver getDriver() throws MalformedURLException {
+        String dir = System.getProperty("user.dir");
+        System.out.println(dir);
         service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//Mind-Graph//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
                 .withIPAddress("127.0.0.1").usingPort(4723).build();
         service.start();
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 6 pro API 30");
-        options.setApp("C://Users//mobileApkFiles//prod 2.apk");
+        options.setApp("C://Users//Mind-Graph//IdeaProjects//MyAirports//src//main//resources//prod 2.apk");
+//        options.setApp("C://Users//mobileApkFiles//prod 2.apk");
         options.setUdid("emulator-5554");
 //        options.setUdid("RZCTB0AY5JW");
         options.setPlatformName("Android");
