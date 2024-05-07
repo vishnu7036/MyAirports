@@ -73,7 +73,7 @@ public class FlightPageSteps {
     }
 
     @And("click on Departure toggle button in the FLIGHT INFORMATION page")
-    public void click_on_departure_toggle_button_in_the_flight_information_page() {
+    public void click_on_departure_toggle_button_in_the_flight_information_page() throws InterruptedException {
         flightPage.clickOnDepartureToggle();
     }
 

@@ -123,10 +123,10 @@ public class MobileUtils {
         System.out.println("Clicked on '" + elementName + "' successfully.");
     }
 
-    public void sendKeys(By locator, String txt) {
+    public void sendKeys(By locator, String elementName) {
         WebElement ele = _driver.findElement(locator);
         Actions act = new Actions(_driver);
-        act.click(ele).sendKeys(txt);
+        act.click(ele).sendKeys(elementName);
     }
 
     public void enterText(By locator, String txt, String elementName) {
@@ -164,7 +164,8 @@ public class MobileUtils {
         }
     }
 
-    public String getRandomAlphabetic(){
-        return RandomStringUtils.randomAlphabetic(5);
+    public void enterRandomAlphabetic(By locator, String elementName, int number){
+        String text = RandomStringUtils.randomAlphabetic(number);
+        this.enterText(locator,text,elementName);
     }
 }

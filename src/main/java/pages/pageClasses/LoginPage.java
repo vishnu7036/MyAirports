@@ -37,7 +37,6 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
     }
 
     public void enterPassword(String text) {
-        this.hideKeyboard();
         enterText(txtPass, text, "password text field");
     }
 

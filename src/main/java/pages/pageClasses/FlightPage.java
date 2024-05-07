@@ -23,7 +23,8 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
         isElementVisible(getElement("FLIGHT INFORMATION"), "FLIGHT INFORMATION");
     }
 
-    public void clickOnDepartureToggle() {
+    public void clickOnDepartureToggle() throws InterruptedException {
+        Thread.sleep(3000);
         List<WebElement> elements = _driver.findElements(allFlightsFromArrival);
         WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
@@ -51,6 +52,7 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
 
     public void selectFlightFromArrival() {
         try {
+            Thread.sleep(3000);
             List<WebElement> elements = _driver.findElements(allFlightsFromArrival);
             WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(20));
             wait.until(ExpectedConditions.visibilityOfAllElements(elements));

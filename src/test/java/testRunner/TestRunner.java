@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/Features",
         glue = {"stepDefinitions"},
         monochrome = true,
-        plugin = {"pretty", "html:C:/Users/Mind-Graph/IdeaProjects/MyAirports/target/HtmlReports"}
+        plugin = {"html", "html:target/HtmlReports"}
 )
 public class TestRunner {
 

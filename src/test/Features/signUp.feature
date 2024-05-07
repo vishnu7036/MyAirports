@@ -1,5 +1,11 @@
 Feature: User Signup Process
 
+#  Background: signup page should displayed
+#    Given the user launches the My Airports application
+#    When the user clicks on the login or signup button
+#    Then the user navigates to the login page
+#    And proceeds to the Signup page by clicking on the signup button
+
   @signup
   Scenario Outline: Signup with Valid Information
     Given My Airports application is opened
@@ -12,3 +18,6 @@ Feature: User Signup Process
     Examples:
       | First Name | Last Name | Email ID                | Password |
       | Mind       | Graph     | vishnu.g@mind-graph.com | Mind@123 |
+
+#    Scenario: Signup field validations
+#      Given

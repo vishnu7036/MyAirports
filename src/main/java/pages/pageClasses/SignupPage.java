@@ -55,4 +55,5 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
         new CommonFunctions(_driver).clickOnBackIcon();
     }
 
+
 }
