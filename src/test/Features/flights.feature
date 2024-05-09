@@ -1,10 +1,7 @@
 Feature: Validate the functionality of Flights flow
+
   @flight
   Scenario: Verify that all functionalities are working fine in FLIGHTS
-    Given open the My airports app from the mobile device
-    When Click on the Login button in splash screen
-    And Give the login credentials and click on the Submit button
-    And Access the Location
     Then click on the Flights icon in the landing page
     Then click on Arrival toggle button in the FLIGHT INFORMATION page
     And click on Departure toggle button in the FLIGHT INFORMATION page

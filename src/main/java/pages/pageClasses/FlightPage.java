@@ -23,19 +23,20 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
         isElementVisible(getElement("FLIGHT INFORMATION"), "FLIGHT INFORMATION");
     }
 
-    public void clickOnDepartureToggle() throws InterruptedException {
-        Thread.sleep(3000);
-        List<WebElement> elements = _driver.findElements(allFlightsFromArrival);
-        WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
-        click(getElement("Departure"), "Departure toggle");
+    public void clickOnDepartureToggle() {
+        try {
+            Thread.sleep(3000);
+            waitForAllElementsVisible(allFlightsFromArrival, "All Flights from Arrival", 20);
+            click(getElement("Departure"), "Departure toggle");
+        } catch (Exception e) {
+
+        }
     }
 
     public void clickOnArrivalToggle() {
         try {
-            List<WebElement> elements = _driver.findElements(allFlightsFromDeparture);
-            WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+            Thread.sleep(2000);
+            waitForAllElementsVisible(allFlightsFromDeparture, "All Flights from Dispature", 20);
             click(getElement("Arrival"), "Arrival toggle");
         } catch (Exception e) {
 
@@ -53,10 +54,8 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
     public void selectFlightFromArrival() {
         try {
             Thread.sleep(3000);
-            List<WebElement> elements = _driver.findElements(allFlightsFromArrival);
-            WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.visibilityOfAllElements(elements));
-            elements.stream().findFirst().ifPresent(WebElement::click);
+            waitForAllElementsVisible(allFlightsFromArrival, "All Flights from Arrival", 20);
+            _driver.findElements(allFlightsFromArrival).stream().findFirst().ifPresent(WebElement::click);
         } catch (Exception e) {
 
         }

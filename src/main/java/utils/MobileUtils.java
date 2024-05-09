@@ -1,5 +1,11 @@
 package utils;
 
+import com.mailosaur.MailosaurClient;
+import com.mailosaur.MailosaurException;
+import com.mailosaur.models.Code;
+import com.mailosaur.models.Message;
+import com.mailosaur.models.MessageSearchParams;
+import com.mailosaur.models.SearchCriteria;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.offset.PointOption;
@@ -10,12 +16,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
 public class MobileUtils {
     private final int default_timeout = 10;
-
+    private static final String apiKey = "3y6SX0EZcAgYopLmB6YQj38BghU5QyOm";
+    private static final String serverId = "uk90qnfw";
+    private static final String serverDomain = "uk90qnfw.mailosaur.net";
     private final AndroidDriver _driver;
 
     public MobileUtils(AndroidDriver driver) {
@@ -27,8 +36,7 @@ public class MobileUtils {
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
         int centerY = height / 2;
-        // Calculate the scroll distance as a fraction of the screen height
-        int scrollDistance = (int) (height * 0.4); // Adjust this value as needed
+        int scrollDistance = (int) (height * 0.4);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX, centerY - scrollDistance))
@@ -41,8 +49,7 @@ public class MobileUtils {
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
         int centerY = height / 2;
-        // Calculate the scroll distance as a fraction of the screen height
-        int scrollDistance = (int) (height * 0.2); // Adjust this value as needed
+        int scrollDistance = (int) (height * 0.2);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX, centerY + scrollDistance)) // Move down
@@ -55,8 +62,7 @@ public class MobileUtils {
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
         int centerY = height / 2;
-        // Calculate the scroll distance as a fraction of the screen width
-        int scrollDistance = (int) (width * 0.2); // Adjust this value as needed
+        int scrollDistance = (int) (width * 0.2);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX - scrollDistance, centerY)) // Move left
@@ -69,8 +75,7 @@ public class MobileUtils {
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
         int centerY = height / 2;
-        // Calculate the scroll distance as a fraction of the screen width
-        int scrollDistance = (int) (width * 0.2); // Adjust this value as needed
+        int scrollDistance = (int) (width * 0.2);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX + scrollDistance, centerY)) // Move right
@@ -82,7 +87,7 @@ public class MobileUtils {
         int width = _driver.manage().window().getSize().getWidth();
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
-        int centerY = height - distanceFromBottom; // Distance from bottom
+        int centerY = height - distanceFromBottom;
 
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
@@ -95,9 +100,8 @@ public class MobileUtils {
         int width = _driver.manage().window().getSize().getWidth();
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
-        int centerY = height - distanceFromBottom; // Distance from bottom
-        // Calculate the scroll distance as a fraction of the screen width
-        int scrollDistance = (int) (width * 0.2); // Adjust this value as needed
+        int centerY = height - distanceFromBottom;
+        int scrollDistance = (int) (width * 0.2);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX + scrollDistance, centerY)) // Move right
@@ -115,6 +119,12 @@ public class MobileUtils {
         WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(default_timeout));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         System.out.println(elementName + " element is visible.");
+    }
+
+    public void waitForAllElementsVisible(By locator, String elementName, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(timeOut));
+        List<WebElement> elements = _driver.findElements(locator);
+        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     public void click(By locator, String elementName) {
@@ -143,8 +153,8 @@ public class MobileUtils {
 
     public void isElementVisible(By locator, String elementName) {
         boolean displayed = _driver.findElement(locator).isDisplayed();
-        if(displayed)
-            System.out.println(elementName+" is visible");
+        if (displayed)
+            System.out.println(elementName + " is visible");
         else
             Assert.fail("Element " + elementName + " is not visible");
     }
@@ -164,11 +174,36 @@ public class MobileUtils {
         }
     }
 
-    public void enterRandomAlphabetic(By locator, String elementName, int number){
+    public void enterRandomAlphabetic(By locator, String elementName, int number) {
         String text = RandomStringUtils.randomAlphabetic(number);
-        this.enterText(locator,text,elementName);
+        this.enterText(locator, text, elementName);
     }
-    public void enterRandomEmail(){
-//        RandomStringUtils.ra/
+
+    public String getEmailId() {
+        String text = RandomStringUtils.randomAlphabetic(4);
+        return text + "@" + serverDomain;
     }
+
+    public Code getOTPFromEmail(String email) throws MailosaurException, IOException, InterruptedException {
+        MailosaurClient mailosaur = new MailosaurClient(apiKey);
+
+        MessageSearchParams params = new MessageSearchParams();
+        params.withServer(serverId);
+
+        SearchCriteria criteria = new SearchCriteria();
+
+        criteria.withSentTo(email);
+
+        Message message = mailosaur.messages().get(params, criteria);
+
+        Code code = message.html().codes().get(0);
+        System.out.println(code);
+
+        return code;
+    }
+
+    public static String getRandomAlphabet() {
+        return RandomStringUtils.randomAlphabetic(5);
+    }
+
 }

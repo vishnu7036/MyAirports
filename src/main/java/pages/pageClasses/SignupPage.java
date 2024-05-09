@@ -1,12 +1,17 @@
 package pages.pageClasses;
 
+import com.mailosaur.MailosaurException;
+import com.mailosaur.models.Code;
 import io.appium.java_client.android.AndroidDriver;
 import pages.pageLocators.SignupPageLoc;
 import utils.CommonFunctions;
 import utils.MobileUtils;
 
+import java.io.IOException;
+
 public class SignupPage extends MobileUtils implements SignupPageLoc {
     private final AndroidDriver _driver;
+    private String email;
 
     public SignupPage(AndroidDriver driver) {
         super(driver);
@@ -17,20 +22,21 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
         isElementVisible(lblHeading, "Signup Page");
     }
 
-    public void enterFirstName(String firstName) throws InterruptedException {
-        enterText(getLocatorForText("First Name"), firstName, "First Name text field");
+    public void enterFirstName(int number) {
+        enterRandomAlphabetic(getLocatorForText("First Name"), "First Name", number);
     }
 
-    public void enterLastName(String lastName) throws InterruptedException {
-        enterText(getLocatorForText("Last Name"), lastName, "Last Name text field");
+    public void enterLastName(int number) {
+        enterRandomAlphabetic(getLocatorForText("Last Name"), "Last Name", number);
     }
 
-    public void enterEmailID(String emailID) throws InterruptedException {
-        enterText(getLocatorForText("Email ID"), emailID, "Email ID text field");
+    public void enterEmail() {
+        email = getEmailId();
+        enterText(getLocatorForText("Email ID"), email, "Email ID text field");
     }
 
-    public void enterPassword(String password) throws InterruptedException {
-       _driver.hideKeyboard();
+    public void enterPassword(String password) {
+        _driver.hideKeyboard();
         enterText(getLocatorForText("Password"), password, "Password text field");
     }
 
@@ -40,7 +46,8 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
 
     public void clickOnCreateAccountBtn() {
         _driver.hideKeyboard();
-        click(getLocatorForButton("CREATE ACCOUNT"), "Create Account button");
+        for (int i = 0; i < 2; i++)
+            click(getLocatorForButton("CREATE ACCOUNT"), "Create Account button");
     }
 
     public void clickOnLoginBtn() {
@@ -55,5 +62,9 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
         new CommonFunctions(_driver).clickOnBackIcon();
     }
 
+    public void enterOTP() throws MailosaurException, IOException, InterruptedException {
+        Code otpFromEmail = getOTPFromEmail(email);
+        System.out.println(otpFromEmail);
+    }
 
 }

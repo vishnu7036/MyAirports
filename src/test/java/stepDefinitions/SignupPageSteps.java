@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import com.mailosaur.MailosaurException;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -8,6 +9,7 @@ import pages.pageClasses.LandingPage;
 import pages.pageClasses.LoginPage;
 import pages.pageClasses.SignupPage;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 public class SignupPageSteps {
@@ -53,9 +55,9 @@ public class SignupPageSteps {
 
     @And("^the user is prompted to enter their (.*), (.*), (.*), and (.*)$")
     public void the_user_is_prompted_to_enter_their_mind_graph_vishnu_g_mind_graph_com_and_mind(String firstName, String lastName, String email, String password) throws InterruptedException {
-        signupPage.enterFirstName(firstName);
-        signupPage.enterLastName(lastName);
-        signupPage.enterEmailID(email);
+        signupPage.enterFirstName(5);
+        signupPage.enterLastName(5);
+        signupPage.enterEmail();
         signupPage.enterPassword(password);
     }
 
@@ -65,8 +67,9 @@ public class SignupPageSteps {
     }
 
     @And("the user account is successfully created")
-    public void the_user_account_is_successfully_created() {
-        System.out.println("User account has been created");
+    public void the_user_account_is_successfully_created() throws MailosaurException, IOException, InterruptedException {
+//        signupPage.enterOTP();
+        System.out.println("Successfully created");
     }
 
 }

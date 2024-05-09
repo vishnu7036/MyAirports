@@ -39,26 +39,9 @@ public class FlightPageSteps {
         BaseSteps.closeDriver();
     }
 
-    @Given("open the My airports app from the mobile device")
-    public void open_the_my_airports_app_from_the_mobile_device() {
-        System.out.println("My airports application opened");
-    }
-
-    @When("Click on the Login button in splash screen")
-    public void click_on_the_login_button_in_splash_screen() {
-        landingPage.clickOnLoginOrSignup();
-    }
-
-    @And("Give the login credentials and click on the Submit button")
-    public void give_the_login_credentials_and_click_on_the_submit_button() {
-        loginPage.enterEmailID("iotuatproject@gmail.com");
-        loginPage.enterPassword("IOTuat@123");
-        loginPage.clickOnSubmitButton();
-    }
-
-    @And("Access the Location")
-    public void access_the_location() {
-        locationPopup.verifyLocationPopupHeading();
+    @Before(value = "@flight", order = 1)
+    public void login_Into_Application_And_Enable_Location_If_Required() {
+        BaseSteps.loginApplication();
     }
 
     @Then("click on the Flights icon in the landing page")
