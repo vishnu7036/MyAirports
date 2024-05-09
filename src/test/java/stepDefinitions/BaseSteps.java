@@ -55,7 +55,6 @@ public class BaseSteps {
         landingPage.loginPage().enterEmailID("iotuatproject@gmail.com");
         landingPage.loginPage().enterPassword("IOTuat@123");
         landingPage.loginPage().clickOnSubmitButton();
-
         landingPage.loginPage().locationPopup().verifyLocationPopupHeading();
     }
 
