@@ -88,4 +88,10 @@ public class HomePage extends MobileUtils implements HomePageLoc {
     public void clickOnUserAccount(){
         click(btnUserAccount,"User Account");
     }
+    public void clickOnChatBot(){
+        click(btnChatBoat,"Chat Bot image");
+    }
+    public void verifyChatBot(){
+        isElementVisible(btnChatBoat,"Chat Bot image");
+    }
 }

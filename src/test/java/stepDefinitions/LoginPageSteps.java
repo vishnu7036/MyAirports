@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 
 public class LoginPageSteps {
     private AndroidDriver _driver;
-    private LandingPage landingPage;
+    private WelcomePage welcomePage;
     private LoginPage loginPage;
     private LocationPopup locationPopup;
     private HomePage homePage;
@@ -22,7 +22,7 @@ public class LoginPageSteps {
     public void launchApp() throws MalformedURLException {
         System.out.println("before Login method is running");
         _driver = BaseSteps.getDriver();
-        landingPage = new LandingPage(_driver);
+        welcomePage = new WelcomePage(_driver);
         loginPage = new LoginPage(_driver);
         locationPopup = new LocationPopup(_driver);
         homePage = new HomePage(_driver);

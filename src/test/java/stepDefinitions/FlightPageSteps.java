@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 
 public class FlightPageSteps {
     private AndroidDriver _driver;
-    private LandingPage landingPage;
+    private WelcomePage welcomePage;
     private LoginPage loginPage;
     private LocationPopup locationPopup;
     private HomePage homePage;
@@ -21,10 +21,10 @@ public class FlightPageSteps {
     private DeparturePage departurePage;
     private ArrivalPage arrivalPage;
 
-    @Before("@flight")
+    @Before(value = "@flight", order = 0)
     public void launchApp() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
-        landingPage = new LandingPage(_driver);
+        welcomePage = new WelcomePage(_driver);
         loginPage = new LoginPage(_driver);
         locationPopup = new LocationPopup(_driver);
         homePage = new HomePage(_driver);

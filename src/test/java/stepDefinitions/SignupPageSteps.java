@@ -1,11 +1,13 @@
 package stepDefinitions;
 
 import com.mailosaur.MailosaurException;
+import com.mailosaur.models.Code;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import pages.pageClasses.LandingPage;
+import pages.pageClasses.VerifyEmailPage;
+import pages.pageClasses.WelcomePage;
 import pages.pageClasses.LoginPage;
 import pages.pageClasses.SignupPage;
 
@@ -14,17 +16,19 @@ import java.net.MalformedURLException;
 
 public class SignupPageSteps {
     private AndroidDriver _driver;
-    private LandingPage landingPage;
+    private WelcomePage welcomePage;
     private LoginPage loginPage;
     private SignupPage signupPage;
+    private VerifyEmailPage verifyEmailPage;
 
     @Before("@signup")
     public void launchApp() throws MalformedURLException {
         System.out.println("before signup method is running");
         _driver = BaseSteps.getDriver();
-        landingPage = new LandingPage(_driver);
+        welcomePage = new WelcomePage(_driver);
         loginPage = new LoginPage(_driver);
         signupPage = new SignupPage(_driver);
+        verifyEmailPage = new VerifyEmailPage(_driver);
     }
 
     @After("@signup")
@@ -40,7 +44,7 @@ public class SignupPageSteps {
 
     @When("the user clicks on the login or Signup button")
     public void the_user_clicks_on_the_login_or_signup_button() {
-        landingPage.clickOnLoginOrSignup();
+        welcomePage.clickOnLoginOrSignup();
     }
 
     @And("the user navigates to the Login page")
@@ -66,10 +70,21 @@ public class SignupPageSteps {
         signupPage.clickOnCreateAccountBtn();
     }
 
+    @And("the user navigates to verify Email page")
+    public void the_user_navigates_to_verify_Email_page() {
+        verifyEmailPage.validateVerifyEmailPage();
+    }
+
+    @Then("enter OTP and click on submit button to create a new account")
+    public void enter_OTP_and_click_on_submit_button_to_create_a_new_account() throws MailosaurException, IOException, InterruptedException {
+        String otp = signupPage.getOTP();
+        verifyEmailPage.enterOTP(otp);
+        verifyEmailPage.clickOnSubmitButton();
+    }
+
     @And("the user account is successfully created")
     public void the_user_account_is_successfully_created() throws MailosaurException, IOException, InterruptedException {
-//        signupPage.enterOTP();
-        System.out.println("Successfully created");
+        System.out.println("user created account successfully");
     }
 
 }

@@ -1,7 +1,6 @@
 package pages.pageClasses;
 
 import com.mailosaur.MailosaurException;
-import com.mailosaur.models.Code;
 import io.appium.java_client.android.AndroidDriver;
 import pages.pageLocators.SignupPageLoc;
 import utils.CommonFunctions;
@@ -62,9 +61,8 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
         new CommonFunctions(_driver).clickOnBackIcon();
     }
 
-    public void enterOTP() throws MailosaurException, IOException, InterruptedException {
-        Code otpFromEmail = getOTPFromEmail(email);
-        System.out.println(otpFromEmail);
+    public String getOTP() throws MailosaurException, IOException, InterruptedException {
+        return getOTPFromEmail(email);
     }
 
 }

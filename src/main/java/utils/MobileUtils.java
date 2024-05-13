@@ -2,10 +2,7 @@ package utils;
 
 import com.mailosaur.MailosaurClient;
 import com.mailosaur.MailosaurException;
-import com.mailosaur.models.Code;
-import com.mailosaur.models.Message;
-import com.mailosaur.models.MessageSearchParams;
-import com.mailosaur.models.SearchCriteria;
+import com.mailosaur.models.*;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.offset.PointOption;
@@ -176,15 +173,15 @@ public class MobileUtils {
 
     public void enterRandomAlphabetic(By locator, String elementName, int number) {
         String text = RandomStringUtils.randomAlphabetic(number);
-        this.enterText(locator, text, elementName);
+        this.enterText(locator, text.toLowerCase(), elementName);
     }
 
     public String getEmailId() {
         String text = RandomStringUtils.randomAlphabetic(4);
-        return text + "@" + serverDomain;
+        return text.toLowerCase() + "@" + serverDomain;
     }
 
-    public Code getOTPFromEmail(String email) throws MailosaurException, IOException, InterruptedException {
+    public String getOTPFromEmail(String email) throws MailosaurException, IOException, InterruptedException {
         MailosaurClient mailosaur = new MailosaurClient(apiKey);
 
         MessageSearchParams params = new MessageSearchParams();
@@ -195,10 +192,8 @@ public class MobileUtils {
         criteria.withSentTo(email);
 
         Message message = mailosaur.messages().get(params, criteria);
-
-        Code code = message.html().codes().get(0);
+        String code = message.text().codes().get(0).value();
         System.out.println(code);
-
         return code;
     }
 

@@ -44,11 +44,23 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
     }
 
     public void clickOnDropDownChooseAirport() {
-        click(ddChooseAirport, "Choose Airport drop down");
+        try {
+            Thread.sleep(2000);
+            waitForAllElementsVisible(allFlightsFromDeparture, "All Flights from Dispature", 20);
+            click(ddChooseAirport, "Choose Airport drop down");
+        } catch (InterruptedException e) {
+
+        }
     }
 
     public void selectFlightFromDeparture() {
-        _driver.findElements(allFlightsFromDeparture).stream().findFirst().ifPresent(WebElement::click);
+        try {
+            Thread.sleep(2000);
+            waitForAllElementsVisible(allFlightsFromDeparture, "All Flights from Dispature", 20);
+            _driver.findElements(allFlightsFromDeparture).stream().findFirst().ifPresent(WebElement::click);
+        } catch (InterruptedException e) {
+
+        }
     }
 
     public void selectFlightFromArrival() {
