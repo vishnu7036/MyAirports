@@ -22,76 +22,183 @@ public class HomePage extends MobileUtils implements HomePageLoc {
         String userName = _driver.findElement(lblUser).getText();
         Assert.assertEquals(userName, text);
     }
-    public void clickOnFlightsButton(){
-        click(getTabs("Flights"),"Flights button");
+
+    public void clickOnFlightsIcon() {
+        click(getTabs("Flights"), "Flights Icon");
     }
-    public void clickOnDiningButton(){
-        click(getTabs("Dining"),"Dining button");
+
+    public void verifyFlightsIcon() {
+        isElementVisible(getTabs("Flights"), "Flights Menu Icon");
     }
-    public void clickOnEssentialAndServicesButton(){
-        click(getTabs("Essential & Services"),"Essential & Services button");
+
+    public void clickOnDiningIcon() {
+        click(getTabs("Dining"), "Dining Icon");
     }
-    public void clickOnKULTerminal1ShuttleBusButton(){
-        click(getTabs("KUL Terminal 1 Shuttle Bus"),"KUL Terminal 1 Shuttle Bus button");
+
+    public void verifyDinningIcon() {
+        isElementVisible(getTabs("Dining"), "Dining Menu Icon");
     }
-    public void clickOnStoresButton(){
-        click(getTabs("Stores"),"Stores button");
+
+    public void clickOnEssentialAndServicesIcon() {
+        click(getTabs("Essential & Services"), "Essential & Services Icon");
     }
-    public void clickOnCustomerFeedbackButton(){
-        click(getTabs("Customer Feedback"),"Customer Feedback button");
+
+    public void verifyEssentialAndServicesIcon() {
+        isElementVisible(getTabs("Essential & Services"), "Flights Icon");
     }
-    public void clickOnForwardButton(){
-        click(btnForward,"Forward button");
+
+    public void clickOnKULTerminal1ShuttleBusIcon() {
+        click(getTabs("KUL Terminal 1 Shuttle Bus"), "KUL Terminal 1 Shuttle Bus Icon");
     }
-    public void clickOnOnlineShoppingButton(){
-        click(getTabs("Online Shopping"),"Online Shopping button");
+
+    public void verifyKULTerminal1ShuttleBusIcon() {
+        isElementVisible(getTabs("KUL Terminal 1 Shuttle Bus"), "KUL Terminal 1 Shuttle Bus Icon");
     }
-    public void clickOnTransportButton(){
-        click(getTabs("Transport"),"Transport button");
+
+    public void clickOnStoresIcon() {
+        click(getTabs("Stores"), "Stores Icon");
     }
-    public void clickOnLoungeButton(){
-        click(getTabs("Lounge"),"Lounge button");
+
+    public void verifyStoresIcon() {
+        isElementVisible(getTabs("Stores"), "Stores Icon");
     }
-    public void clickOnBookingServicesButton(){
-        click(getTabs("Booking Services"),"Booking Services button");
+
+    public void clickOnCustomerFeedbackIcon() {
+        click(getTabs("Customer Feedback"), "Customer Feedback Icon");
     }
-    public void clickOnHotels(){
-        click(getTabs("Hotels"),"Hotels button");
+
+    public void verifyCustomerFeedbackIcon() {
+        isElementVisible(getTabs("Customer Feedback"), "Customer Feedback Icon");
     }
-    public void clickOnBureaudeChangeButton(){
-        click(getTabs("Bureau de Change"),"Bureau de Change button");
+
+    public void clickOnForwardButton() {
+        click(btnForward, "Forward Icon");
     }
-    public void clickOnBackwardButton(){
-        click(btnBackward,"Backward button");
+
+    public void clickOnOnlineShoppingIcon() {
+        click(getTabs("Online Shopping"), "Online Shopping Icon");
     }
-    public void clickOnClinicButton(){
-        click(getTabs("Clinic"),"Clinic button");
+
+    public void verifyOnlineShoppingIcon() {
+        isElementVisible(getTabs("Online Shopping"), "Online Shopping Icon");
     }
-    public void clickOnTransferCounterButton(){
-        click(getTabs("Transfer Counter"),"Transfer Counter button");
+
+    public void clickOnTransportIcon() {
+        click(getTabs("Transport"), "Transport Icon");
     }
-    public void clickOnAirlineTicketingCentreButton(){
-        click(getTabs("Airline Ticketing Centre"),"Airline Ticketing Centre button");
+
+    public void verifyTransportIcon() {
+        isElementVisible(getTabs("Transport"), "Transport Icon");
     }
-    public void clickOnBaggageReclaimButton(){
-        click(getTabs("Baggage Reclaim"),"Baggage Reclaim button");
+
+    public void clickOnLoungeIcon() {
+        click(getTabs("Lounge"), "Lounge Icon");
     }
-    public void clickOnBaggageLockerButton(){
-        click(getTabs("Baggage Locker"),"Baggage Locker button");
+
+    public void verifyLoungeIcon() {
+        isElementVisible(getTabs("Lounge"), "Lounge Icon");
     }
-    public void clickOnInformationCentreButton(){
-        click(getTabs("Information Centre"),"Information Centre button");
+
+    public void clickOnBookingServicesIcon() {
+        click(getTabs("Booking Services"), "Booking Services Icon");
     }
-    public void moveLeft(){
-        scrollLeft();
+
+    public void verifyBookingServicesIcon() {
+        isElementVisible(getTabs("Booking Services"), "Booking Services Icon");
     }
-    public void clickOnUserAccount(){
-        click(btnUserAccount,"User Account");
+
+    public void clickOnHotelsIcon() {
+        click(getTabs("Hotels"), "Hotels Icon");
     }
-    public void clickOnChatBot(){
-        click(btnChatBoat,"Chat Bot image");
+
+    public void verifyHotelsIcon() {
+        isElementVisible(getTabs("Hotels"), "Hotels Icon");
     }
-    public void verifyChatBot(){
-        isElementVisible(btnChatBoat,"Chat Bot image");
+
+    public void clickOnBureaudeChangeIcon() {
+        click(getTabs("Bureau de Change"), "Bureau de Change Icon");
+    }
+
+    public void verifyBureaudeChangeIcon() {
+        isElementVisible(getTabs("Bureau de Change"), "Bureau de Change Icon");
+    }
+
+    public void clickOnBackwardIcon() {
+        click(btnBackward, "Backward Icon");
+    }
+
+    public void clickOnClinicIcon() {
+        click(getTabs("Clinic"), "Clinic Icon");
+    }
+
+    public void verifyClinicIcon() {
+        isElementVisible(getTabs("Clinic"), "Clinic Icon");
+    }
+
+    public void clickOnTransferCounterIcon() {
+        click(getTabs("Transfer Counter"), "Transfer Counter Icon");
+    }
+
+    public void verifyTransferCounterIcon() {
+        isElementVisible(getTabs("Transfer Counter"), "Transfer Counter Icon");
+    }
+
+    public void clickOnAirlineTicketingCentreIcon() {
+        click(getTabs("Airline Ticketing Centre"), "Airline Ticketing Centre Icon");
+    }
+
+    public void verifyAirlineTicketingCentreIcon() {
+        isElementVisible(getTabs("Airline Ticketing Centre"), "Airline Ticketing Centre Icon");
+    }
+
+    public void clickOnBaggageReclaimIcon() {
+        click(getTabs("Baggage Reclaim"), "Baggage Reclaim Icon");
+    }
+
+    public void verifyBaggageReclaimIcon() {
+        isElementVisible(getTabs("Baggage Reclaim"), "Baggage Reclaim Icon");
+    }
+
+    public void clickOnBaggageLockerIcon() {
+        click(getTabs("Baggage Locker"), "Baggage Locker button");
+    }
+
+    public void verifyBaggageLockerIcon() {
+        isElementVisible(getTabs("Baggage Locker"), "Baggage Locker Icon");
+    }
+
+    public void clickOnInformationCentreIcon() {
+        click(getTabs("Information Centre"), "Information Centre button");
+    }
+
+    public void verifyInformationCentreIcon() {
+        isElementVisible(getTabs("Information Centre"), "Information Centre Icon");
+    }
+
+    public void moveLeft() {
+        scrollLeft(500);
+    }
+
+    public void clickOnUserAccount() {
+        click(btnUserAccount, "User Account");
+    }
+
+    public void clickOnChatBot() {
+        click(btnChatBoat, "Chat Bot image");
+    }
+
+    public void verifyChatBot() {
+        isElementVisible(btnChatBoat, "Chat Bot image");
+    }
+
+    public void clickOnButterflyCard() {
+        try {
+            Thread.sleep(5000);
+            for (int i = 0; i < 3; i++)
+                scrollLeft(500);
+            click(btnCards, "Card");
+        } catch (Exception e) {
+
+        }
     }
 }

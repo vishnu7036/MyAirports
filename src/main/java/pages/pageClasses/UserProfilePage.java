@@ -80,7 +80,7 @@ public class UserProfilePage extends MobileUtils implements UserProfilePageLoc {
         click(btnEdit, "Edit Icon");
     }
 
-    public void clickOnCamera() {
+    public void clickOnCameraIcon() {
         click(btnCamera, "Camera Icon");
     }
 }

@@ -54,38 +54,12 @@ public class MobileUtils {
                 .perform();
     }
 
-    public void scrollLeft() {
-        int width = _driver.manage().window().getSize().getWidth();
-        int height = _driver.manage().window().getSize().getHeight();
-        int centerX = width / 2;
-        int centerY = height / 2;
-        int scrollDistance = (int) (width * 0.2);
-        TouchAction touchAction = new TouchAction(_driver);
-        touchAction.longPress(PointOption.point(centerX, centerY))
-                .moveTo(PointOption.point(centerX - scrollDistance, centerY)) // Move left
-                .release()
-                .perform();
-    }
-
-    public void scrollRight() {
-        int width = _driver.manage().window().getSize().getWidth();
-        int height = _driver.manage().window().getSize().getHeight();
-        int centerX = width / 2;
-        int centerY = height / 2;
-        int scrollDistance = (int) (width * 0.2);
-        TouchAction touchAction = new TouchAction(_driver);
-        touchAction.longPress(PointOption.point(centerX, centerY))
-                .moveTo(PointOption.point(centerX + scrollDistance, centerY)) // Move right
-                .release()
-                .perform();
-    }
-
-    public void scrollLeft(int distanceFromBottom, int scrollDistance) {
+    public void scrollLeft(int distanceFromBottom) {
         int width = _driver.manage().window().getSize().getWidth();
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
         int centerY = height - distanceFromBottom;
-
+        int scrollDistance = (int) (width * 0.4);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX - scrollDistance, centerY)) // Move left
@@ -98,7 +72,7 @@ public class MobileUtils {
         int height = _driver.manage().window().getSize().getHeight();
         int centerX = width / 2;
         int centerY = height - distanceFromBottom;
-        int scrollDistance = (int) (width * 0.2);
+        int scrollDistance = (int) (width * 0.4);
         TouchAction touchAction = new TouchAction(_driver);
         touchAction.longPress(PointOption.point(centerX, centerY))
                 .moveTo(PointOption.point(centerX + scrollDistance, centerY)) // Move right
@@ -130,12 +104,6 @@ public class MobileUtils {
         System.out.println("Clicked on '" + elementName + "' successfully.");
     }
 
-    public void sendKeys(By locator, String elementName) {
-        WebElement ele = _driver.findElement(locator);
-        Actions act = new Actions(_driver);
-        act.click(ele).sendKeys(elementName);
-    }
-
     public void enterText(By locator, String txt, String elementName) {
         waitForElementVisibility(locator, elementName);
         WebElement ele = _driver.findElement(locator);
@@ -145,7 +113,13 @@ public class MobileUtils {
     }
 
     public void hideKeyboard() {
-        _driver.hideKeyboard();
+        try {
+            Thread.sleep(1000);
+            if (_driver.isKeyboardShown())
+                _driver.hideKeyboard();
+        } catch (Exception e) {
+
+        }
     }
 
     public void isElementVisible(By locator, String elementName) {
@@ -199,6 +173,11 @@ public class MobileUtils {
 
     public static String getRandomAlphabet() {
         return RandomStringUtils.randomAlphabetic(5);
+    }
+
+    public void verifyText(By locator, String ExpectedText) {
+        String actualText = _driver.findElement(locator).getText();
+        Assert.assertEquals(actualText, ExpectedText);
     }
 
 }

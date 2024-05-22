@@ -9,5 +9,6 @@ public interface ConversationsPageLoc {
     By btnFAQ = By.xpath("//*[@text='FAQ']");
     By btnBack = AppiumBy.accessibilityId("Navigate up");
     By listMessages = By.xpath("//*[@resource-id='klia.mahb.ios:id/messageList']/*");
+    By lblNoConversations = By.xpath("//*[@text='You have no conversations']");
 
 }

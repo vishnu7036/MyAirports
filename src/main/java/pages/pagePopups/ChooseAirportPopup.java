@@ -1,13 +1,10 @@
 package pages.pagePopups;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebElement;
-import pages.popupLocators.ChooseAirportLoc;
+import pages.popupLocators.ChooseAirportPopupLoc;
 import utils.MobileUtils;
 
-import java.util.List;
-
-public class ChooseAirportPopup extends MobileUtils implements ChooseAirportLoc {
+public class ChooseAirportPopup extends MobileUtils implements ChooseAirportPopupLoc {
     private AndroidDriver _driver;
     public ChooseAirportPopup(AndroidDriver driver){
         super(driver);

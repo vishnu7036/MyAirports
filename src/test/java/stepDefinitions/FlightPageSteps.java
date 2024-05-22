@@ -12,9 +12,6 @@ import java.net.MalformedURLException;
 
 public class FlightPageSteps {
     private AndroidDriver _driver;
-    private WelcomePage welcomePage;
-    private LoginPage loginPage;
-    private LocationPopup locationPopup;
     private HomePage homePage;
     private FlightPage flightPage;
     private ChooseAirportPopup chooseAirport;
@@ -22,11 +19,8 @@ public class FlightPageSteps {
     private ArrivalPage arrivalPage;
 
     @Before(value = "@flight", order = 0)
-    public void launchApp() throws MalformedURLException {
+    public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
-        welcomePage = new WelcomePage(_driver);
-        loginPage = new LoginPage(_driver);
-        locationPopup = new LocationPopup(_driver);
         homePage = new HomePage(_driver);
         flightPage = new FlightPage(_driver);
         chooseAirport = new ChooseAirportPopup(_driver);
@@ -46,7 +40,7 @@ public class FlightPageSteps {
 
     @Then("click on the Flights icon in the landing page")
     public void click_on_the_flights_icon_in_the_landing_page() {
-        homePage.clickOnFlightsButton();
+        homePage.clickOnFlightsIcon();
     }
 
     @Then("click on Arrival toggle button in the FLIGHT INFORMATION page")

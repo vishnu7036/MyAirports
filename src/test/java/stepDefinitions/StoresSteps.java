@@ -6,7 +6,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
 import pages.pageClasses.*;
-import pages.pagePopups.LocationPopup;
 
 import java.net.MalformedURLException;
 
@@ -37,7 +36,7 @@ public class StoresSteps {
 
     @Given("the user clicks on the Stores button on the home page")
     public void the_user_clicks_on_the_stores_button_on_the_home_page() {
-        homePage.clickOnStoresButton();
+        homePage.clickOnStoresIcon();
     }
 
     @Then("the user navigates to the Stores page")

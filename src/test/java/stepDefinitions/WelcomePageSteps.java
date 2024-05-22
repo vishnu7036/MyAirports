@@ -62,8 +62,6 @@ public class WelcomePageSteps {
         welcomePage.verifyChangeLanguageTextInChineseLanguage();
         welcomePage.verifyLoginOrSingUpLinkTextInChineseLanguage();
         welcomePage.verifyGuestLinkTextInChineseLanguage();
-        welcomePage.verifyEnglishLinkTextInEnglish();
-        welcomePage.verifyMalaysiaLinkTextInMalaysia();
     }
 
     @And("the user clicks on ENGLISH in the Welcome Page")

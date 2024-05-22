@@ -13,6 +13,8 @@ public class ConversationsPage extends MobileUtils implements ConversationsPageL
     public void verifyConversationsPage(){
         isElementVisible(lblHeading,"Conversations page");
     }
+    public void verifyNo(){
 
+    }
 
 }
