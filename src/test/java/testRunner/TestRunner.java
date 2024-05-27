@@ -9,7 +9,10 @@ import org.junit.runner.RunWith;
         features = "src/test/Features",
         glue = {"stepDefinitions"},
         monochrome = true,
-        plugin = {"html", "html:target/HtmlReports"}
+        plugin = {"pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "timeline:test-output-thread/"
+        }
 )
 public class TestRunner {
 

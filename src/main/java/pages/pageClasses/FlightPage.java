@@ -25,7 +25,7 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
 
     public void clickOnDepartureToggle() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             waitForAllElementsVisible(allFlightsFromArrival, "All Flights from Arrival", 20);
             click(getElement("Departure"), "Departure toggle");
         } catch (Exception e) {
@@ -65,8 +65,9 @@ public class FlightPage extends MobileUtils implements FlightPageLoc {
 
     public void selectFlightFromArrival() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             waitForAllElementsVisible(allFlightsFromArrival, "All Flights from Arrival", 20);
+            Thread.sleep(1000);
             _driver.findElements(allFlightsFromArrival).stream().findFirst().ifPresent(WebElement::click);
         } catch (Exception e) {
 

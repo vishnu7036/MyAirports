@@ -19,12 +19,12 @@ public class HomePageSteps {
         homePage = new HomePage(_driver);
     }
 
-    @After("@flight")
+    @After("@homePage")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@flight", order = 1)
+    @Before(value = "@homePage", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com","Mind@123");
     }

@@ -10,7 +10,7 @@ public interface StoresPageLoc {
     By btnMenu = By.xpath("//*[@text='Stores']/following-sibling::*[2]/*");
     By txtSearch = By.xpath("//*[@text='Search for Stores']");
     By allStores = By.xpath("//*[@text='Search for Stores']/../../../following-sibling::*/*/*/*[1]");
-    By ddTerminalOptions = By.xpath("//*[@text='Search for Stores']/../../../following-sibling::*[2]/*/*/*/*/*");
+    By ddTerminalOptions = By.xpath("//*[@text='Search for Stores']/../../../following-sibling::*[2]/*/*/*/*");
 
 
 

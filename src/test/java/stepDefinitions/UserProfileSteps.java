@@ -25,8 +25,9 @@ public class UserProfileSteps {
     private GeneralPage generalPage;
     private ContactUsPage contactUsPage;
     private EditProfilePage editProfilePage;
+    private FavouritesPage favouritesPage;
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile", order = 0)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
@@ -39,14 +40,15 @@ public class UserProfileSteps {
         generalPage = new GeneralPage(_driver);
         contactUsPage = new ContactUsPage(_driver);
         editProfilePage = new EditProfilePage(_driver);
+        favouritesPage = new FavouritesPage(_driver);
     }
 
-    @After(value = "@camera or @password or @contactUs or @editProfile")
+    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile", order = 1)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
@@ -239,5 +241,43 @@ public class UserProfileSteps {
         userProfilePage.clickOnEditIcon();
         editProfilePage.enterFirstName("ioc");
         editProfilePage.clickOnSave();
+    }
+
+
+
+    @Then("the user clicks on the Favorites icon")
+    public void the_user_clicks_on_the_favorites_icon() {
+        userProfilePage.clickOnFavourites();
+    }
+
+    @And("verifies that the user lands on the Favorites page")
+    public void verifies_that_the_user_lands_on_the_favorites_page() {
+        favouritesPage.verifyFavouritesPage();
+    }
+
+    @Then("clicks on any one of the favorite items, such as Convenience Store, ATM Machine, etc., from the Favorites Page")
+    public void clicks_on_any_one_of_the_favorite_items_such_as_convenience_store_atm_machine_etc_from_the_favorites_page() {
+        favouritesPage.getTextFromFirstDisplayedFavouriteStore();
+        favouritesPage.clickOnFirstDisplayedFavouriteStore();
+    }
+
+    @And("verifies that the user navigates to the selected favorite item page")
+    public void verifies_that_the_user_navigates_to_the_selected_favorite_item_page() {
+        favouritesPage.verifySameStoreHasBeenOpened();
+    }
+
+    @Then("clicks on the Back button from the store page")
+    public void clicks_on_the_back_button_from_the_store_page() {
+        favouritesPage.singleStorePage().clickOnBackIcon();
+    }
+
+    @And("clicks on the Back button from the Favorites page")
+    public void clicks_on_the_back_button_from_the_favorites_page() {
+        favouritesPage.clickOnBackButton();
+    }
+
+    @Then("verifies that the user lands on the User Profile page")
+    public void verifies_that_the_user_lands_on_the_user_profile_page() {
+        userProfilePage.verifyUserProfilePage();
     }
 }

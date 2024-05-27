@@ -35,7 +35,6 @@ public class GeneralPageSteps {
 
     @Given("the user clicks on the user account from the homepage")
     public void the_user_clicks_on_the_user_account_from_the_homepage() {
-        homePage.moveLeft();
         homePage.clickOnUserAccount();
     }
 

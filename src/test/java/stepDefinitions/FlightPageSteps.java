@@ -35,7 +35,7 @@ public class FlightPageSteps {
 
     @Before(value = "@flight", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication("iotuatproject@gmail.com","Mind@123");
+        BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
 
     @Then("click on the Flights icon in the landing page")
@@ -74,7 +74,6 @@ public class FlightPageSteps {
 
     @Then("select any flight from available flights for Arrival")
     public void select_any_flight_from_available_flights_for_arrival() {
-        flightPage.clickOnArrivalToggle();
         flightPage.selectFlightFromArrival();
     }
 

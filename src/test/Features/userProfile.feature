@@ -45,4 +45,14 @@ Feature: User Profile Page Validations
     Then clicks on the Back icon from the Edit Profile Page
     And verifies that the user name has been changed in the User Profile Page
 
-
+  @favourites
+  Scenario: Verify the navigation flow of the Favorites Page
+    Given the user clicks on the User Profile button on the homepage
+    Then the user clicks on the Favorites icon
+    And verifies that the user lands on the Favorites page
+    Then clicks on any one of the favorite items, such as Convenience Store, ATM Machine, etc., from the Favorites Page
+    And verifies that the user navigates to the selected favorite item page
+    Then clicks on the Back button from the store page
+    And verifies that the user lands on the Favorites page
+    And clicks on the Back button from the Favorites page
+    Then verifies that the user lands on the User Profile page

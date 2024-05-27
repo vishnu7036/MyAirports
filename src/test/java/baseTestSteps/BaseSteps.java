@@ -17,7 +17,7 @@ public class BaseSteps {
 
     public static AndroidDriver driver;
     public static AppiumDriverLocalService service;
-    public final static int time_out = 60;
+    public final static int time_out = 40;
     public static WelcomePage welcomePage;
 
     public static AndroidDriver getDriver() throws MalformedURLException {
@@ -27,7 +27,7 @@ public class BaseSteps {
 //        service.start();
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 6 pro API 30");
-        options.setApp(dir + "//src//main//resources//prod 2.apk");
+        options.setApp(dir + "//src//main//ApkFile//prod.apk");
         options.setUdid("emulator-5554");
         options.setPlatformName("Android");
         options.setPlatformVersion("Android 11");

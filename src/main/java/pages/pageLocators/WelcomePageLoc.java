@@ -18,4 +18,5 @@ public interface WelcomePageLoc {
     By getLblChangeLangInChinese = By.xpath("//*[@text='选择语言']");
     By btnLoginOrSignupInChinese = By.xpath("//*[contains(@text,'登录 / 注册')]");
     By btnGuestInChinese = By.xpath("//*[contains(@text,'访客')]");
+    By btnEnglishInChinese = By.xpath("//*[@text='英文 ']");
 }

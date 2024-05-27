@@ -43,7 +43,7 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
     public void clickOnSubmitButton() {
         hideKeyboard();
         click(btnSubmit, "Submit button");
-        click(btnSubmit, "Submit button");
+        click(btnSubmit, "");
     }
 
     public void hideKeyboard() {

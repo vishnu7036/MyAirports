@@ -98,6 +98,9 @@ public class WelcomePage extends MobileUtils implements WelcomePageLoc {
         String text = _driver.findElement(btnGuestInChinese).getText();
         Assert.assertTrue(text.contains("访客"),"Guest Link displayed in Chinese Language");
     }
+    public void clickOnEnglishTextInChinese(){
+        click(btnEnglishInChinese,"English");
+    }
 
 
     public LoginPage loginPage() {

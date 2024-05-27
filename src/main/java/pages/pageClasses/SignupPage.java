@@ -2,6 +2,7 @@ package pages.pageClasses;
 
 import com.mailosaur.MailosaurException;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.NoSuchElementException;
 import pages.pageLocators.SignupPageLoc;
 import utils.CommonFunctions;
 import utils.MobileUtils;
@@ -29,13 +30,14 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
         enterRandomAlphabetic(getLocatorForText("Last Name"), "Last Name", number);
     }
 
-    public void enterEmail() {
+    public String enterEmail() {
         email = getEmailId();
         enterText(getLocatorForText("Email ID"), email, "Email ID text field");
+        return email;
     }
 
     public void enterPassword(String password) {
-        _driver.hideKeyboard();
+        hideKeyboard();
         enterText(getLocatorForText("Password"), password, "Password text field");
     }
 
@@ -43,10 +45,34 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
         click(ddMalaysia, "Drop down");
     }
 
+    public void clickOnTermsAndConditionsCheckBox() {
+        try {
+            hideKeyboard();
+            Thread.sleep(2000);
+            click(chkboxTerms, "Terms & Conditions Check Box");
+            click(chkboxTerms, "");
+        } catch (Exception ignored) {
+
+        }
+    }
+
     public void clickOnCreateAccountBtn() {
-        _driver.hideKeyboard();
-        for (int i = 0; i < 2; i++)
+        try {
+            scrollUp();
+            Thread.sleep(1500);
             click(getLocatorForButton("CREATE ACCOUNT"), "Create Account button");
+            boolean displayed = _driver.findElement(verifyEmailPage().lblHeading).isDisplayed();
+            if (!displayed) {
+                this.enterFirstName(5);
+                this.enterLastName(5);
+                this.enterEmail();
+                hideKeyboard();
+                click(getLocatorForButton("CREATE ACCOUNT"), "Create Account button");
+                click(getLocatorForButton("CREATE ACCOUNT"), "");
+            }
+        } catch (NoSuchElementException | InterruptedException ignored) {
+
+        }
     }
 
     public void clickOnLoginBtn() {
@@ -63,6 +89,18 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
 
     public String getOTP() throws MailosaurException, IOException, InterruptedException {
         return getOTPFromEmail(email);
+    }
+
+    public void verifySuccessfullyCreatedPopup() {
+        isElementVisible(lblSuccessfullyCreated, "Successfully Created Popup");
+    }
+
+    public void clickOnLoginButton() {
+        click(btnLogin, "Login button");
+    }
+
+    public VerifyEmailPage verifyEmailPage() {
+        return new VerifyEmailPage(_driver);
     }
 
 }

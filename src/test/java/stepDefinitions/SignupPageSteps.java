@@ -6,10 +6,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import pages.pageClasses.VerifyEmailPage;
-import pages.pageClasses.WelcomePage;
-import pages.pageClasses.LoginPage;
-import pages.pageClasses.SignupPage;
+import pages.pageClasses.*;
+import pages.pagePopups.LocationPopup;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,6 +18,9 @@ public class SignupPageSteps {
     private LoginPage loginPage;
     private SignupPage signupPage;
     private VerifyEmailPage verifyEmailPage;
+    private String email;
+    private HomePage homePage;
+    private LocationPopup locationPopup;
 
     @Before("@signup")
     public void launchApp() throws MalformedURLException {
@@ -29,6 +30,8 @@ public class SignupPageSteps {
         loginPage = new LoginPage(_driver);
         signupPage = new SignupPage(_driver);
         verifyEmailPage = new VerifyEmailPage(_driver);
+        homePage = new HomePage(_driver);
+        locationPopup = new LocationPopup(_driver);
     }
 
     @After("@signup")
@@ -57,16 +60,17 @@ public class SignupPageSteps {
         loginPage.clickOnSignUpBtn();
     }
 
-    @And("^the user is prompted to enter their (.*), (.*), (.*), and (.*)$")
-    public void the_user_is_prompted_to_enter_their_mind_graph_vishnu_g_mind_graph_com_and_mind(String firstName, String lastName, String email, String password) throws InterruptedException {
+    @And("the user is prompted to enter their First Name, Last Name, Email ID, and Password")
+    public void the_user_is_prompted_to_enter_their_FirstName_LastName_EmailID_and_Password() {
         signupPage.enterFirstName(5);
         signupPage.enterLastName(5);
-        signupPage.enterEmail();
-        signupPage.enterPassword(password);
+        email = signupPage.enterEmail();
+        signupPage.enterPassword("Mind@123");
     }
 
     @Then("clicks on the Create Account button")
     public void the_user_fills_in_the_required_information() {
+        signupPage.clickOnTermsAndConditionsCheckBox();
         signupPage.clickOnCreateAccountBtn();
     }
 
@@ -84,7 +88,21 @@ public class SignupPageSteps {
 
     @And("the user account is successfully created")
     public void the_user_account_is_successfully_created() throws MailosaurException, IOException, InterruptedException {
-        System.out.println("user created account successfully");
+        signupPage.verifySuccessfullyCreatedPopup();
+        signupPage.clickOnLoginButton();
+    }
+
+    @When("the user logs in with the new credentials")
+    public void the_user_logs_in_with_the_new_credentials() {
+        loginPage.enterEmailID(email);
+        loginPage.enterPassword("Mind@123");
+        loginPage.clickOnSubmitButton();
+        locationPopup.verifyLocationPopupHeading();
+    }
+
+    @Then("the user is able to login into the application successfully")
+    public void the_user_is_able_to_login_into_the_application_successfully() {
+        homePage.verifyHomePage();
     }
 
 }
