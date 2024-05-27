@@ -5,6 +5,8 @@ import com.mailosaur.MailosaurException;
 import com.mailosaur.models.*;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
@@ -108,6 +110,7 @@ public class MobileUtils {
         waitForElementVisibility(locator, elementName);
         WebElement ele = _driver.findElement(locator);
         ele.click();
+        ele.clear();
         ele.sendKeys(txt);
         System.out.println("Entered text '" + txt + "' into '" + elementName + "'.");
     }
@@ -178,6 +181,14 @@ public class MobileUtils {
     public void verifyText(By locator, String ExpectedText) {
         String actualText = _driver.findElement(locator).getText();
         Assert.assertEquals(actualText, ExpectedText);
+    }
+
+    public void clickOnDeviceBackButton() {
+        _driver.pressKey(new KeyEvent(AndroidKey.BACK));
+    }
+
+    public void clickOnDeviceHomeButton() {
+        _driver.pressKey(new KeyEvent(AndroidKey.HOME));
     }
 
 }

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 
 public class CommonFunctions extends MobileUtils {
     private By btnBack = By.xpath("(//*[@class='android.widget.ImageView'])[2]");
+    private By btnSave = By.xpath("//*[@text='SAVE']");
+
     private AndroidDriver _driver;
 
     public CommonFunctions(AndroidDriver driver) {

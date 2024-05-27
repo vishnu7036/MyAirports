@@ -55,7 +55,7 @@ public class WelcomePageSteps {
 
     @Then("the user clicks on CHINESE in the Welcome Page")
     public void the_user_clicks_on_chinese_in_the_welcome_page() {
-        welcomePage.clickOnChineseLink();
+         welcomePage.clickOnChineseLink();
     }
 
     @And("verifies that the app language changes in CHINESE language")

@@ -32,7 +32,7 @@ public class StoresSteps {
 
     @Before(value = "@Stores", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication();
+        BaseSteps.loginApplication("iotuatproject@gmail.com","Mind@123");
     }
 
     @Given("the user clicks on the Stores button on the home page")

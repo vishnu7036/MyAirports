@@ -44,13 +44,13 @@ public class BaseSteps {
 //            service.stop();
     }
 
-    public static void loginApplication() {
+    public static void loginApplication(String email, String password) {
         welcomePage = new WelcomePage(driver);
         welcomePage.verifyWelcomePage();
         welcomePage.clickOnLoginOrSignup();
         welcomePage.loginPage().verifyLoginPage();
-        welcomePage.loginPage().enterEmailID("iotuatproject@gmail.com");
-        welcomePage.loginPage().enterPassword("IOTuat@123");
+        welcomePage.loginPage().enterEmailID(email);
+        welcomePage.loginPage().enterPassword(password);
         welcomePage.loginPage().clickOnSubmitButton();
         welcomePage.loginPage().locationPopup().verifyLocationPopupHeading();
     }

@@ -38,7 +38,7 @@ public class LoginPageSteps {
     }
     @Before(value = "@login",order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required(){
-        BaseSteps.loginApplication();
+        BaseSteps.loginApplication("iotuatproject@gmail.com","Mind@123");
     }
 
     @Then("the user successfully navigates to the Home page")

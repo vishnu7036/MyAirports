@@ -1,6 +1,7 @@
 package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
+import org.testng.Assert;
 import pages.pageLocators.UserProfilePageLoc;
 import utils.MobileUtils;
 
@@ -21,27 +22,27 @@ public class UserProfilePage extends MobileUtils implements UserProfilePageLoc {
     }
 
     public void verifyPromotionsButton() {
-        isElementVisible(getElementName(""), "Promotions button");
+        isElementVisible(getElementName("Promotions"), "Promotions button");
     }
 
     public void verifyInboxButton() {
-        isElementVisible(getElementName(""), "Inbox button");
+        isElementVisible(getElementName("Inbox"), "Inbox button");
     }
 
     public void verifyFavouritesButton() {
-        isElementVisible(getElementName(""), "Favourites button");
+        isElementVisible(getElementName("Favourites"), "Favourites button");
     }
 
     public void verifySettingsButton() {
-        isElementVisible(getElementName(""), "Settings button");
+        isElementVisible(getElementName("Settings"), "Settings button");
     }
 
     public void verifyGeneralButton() {
-        isElementVisible(getElementName(""), "General button");
+        isElementVisible(getElementName("General"), "General button");
     }
 
     public void verifyFeedbackButton() {
-        isElementVisible(getElementName(""), "Feedback button");
+        isElementVisible(getElementName("Feedback"), "Feedback button");
     }
 
     public void verifyEditIcon() {
@@ -83,4 +84,18 @@ public class UserProfilePage extends MobileUtils implements UserProfilePageLoc {
     public void clickOnCameraIcon() {
         click(btnCamera, "Camera Icon");
     }
+
+    public void verifyUserName(String actualText) {
+        String expText = _driver.findElement(lblUserName).getText();
+        Assert.assertTrue(expText.contains(actualText), "User name is not same");
+    }
+
+    public EditProfilePage editProfilePage() {
+        return new EditProfilePage(_driver);
+    }
+
+    public String getFirstNameFromEditProfilePage() {
+        return editProfilePage().getFirstName();
+    }
+
 }

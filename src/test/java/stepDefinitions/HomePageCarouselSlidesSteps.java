@@ -28,7 +28,7 @@ public class HomePageCarouselSlidesSteps {
 
     @Before(value = "@Butterfly", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication();
+        BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
 
     @Given("the user selects the Butterfly Effect card from the carousel slides on the home page")
