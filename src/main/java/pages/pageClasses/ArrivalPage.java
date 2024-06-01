@@ -16,10 +16,10 @@ public class ArrivalPage extends MobileUtils implements ArrivalPageLoc {
     }
 
     public void verifyArrivalPage() {
-        try{
+        try {
             Thread.sleep(3000);
             isElementVisible(lblHeading, "Arrival Page");
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -33,5 +33,11 @@ public class ArrivalPage extends MobileUtils implements ArrivalPageLoc {
         String text = parts[1].trim();
 //        String text = Arrays.stream(parts).skip(1).findFirst().orElse("");
         Assert.assertEquals(text, "Please verify the tag number on your luggage before retrieving them");
+    }
+
+    public String verifyTerminal() throws InterruptedException {
+        Thread.sleep(2000);
+        isElementVisible(lblTerminal, "Terminal Name");
+        return _driver.findElement(lblTerminal).getText();
     }
 }

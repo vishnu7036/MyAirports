@@ -201,4 +201,39 @@ public class HomePage extends MobileUtils implements HomePageLoc {
 
         }
     }
+    public void verifyHomeButton(){
+        isElementVisible(btnHome,"Home button");
+    }
+    public void verifyKeyInfoButton(){
+        isElementVisible(btnKeyInfo,"Key Info button");
+    }
+    public void verifyEzpazButton(){
+        isElementVisible(btnEzpaz,"EZpaz button");
+    }
+    public void verifyMapsButton(){
+        isElementVisible(btnMaps,"Maps button");
+    }
+    public void verifyMenuButton(){
+        isElementVisible(btnMenu,"Menu button");
+    }
+
+    public void clickOnHomeButton(){
+        click(btnHome,"Home button");
+    }
+    public void clickOnKeyInfoButton(){
+        click(btnKeyInfo,"Key Info button");
+    }
+    public void clickOnEzpazButton(){
+        click(btnEzpaz,"EZpaz button");
+    }
+    public void clickOnMapsButton(){
+        click(btnMaps,"Maps button");
+    }
+    public void clickOnMenuButton(){
+        click(btnMenu,"Menu button");
+    }
+    public void clickOnCloseMenuButton(){
+        click(btnCloseMenu,"Close Menu button");
+    }
+
 }

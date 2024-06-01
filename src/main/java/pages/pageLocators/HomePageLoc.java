@@ -16,5 +16,10 @@ public interface HomePageLoc {
     By btnUserAccount = By.xpath("//*[contains(@text,'Special')]/../following-sibling::*/*[1]");
     By btnChatBoat = By.xpath("//*[@text='HOME']/../../preceding-sibling::*/*/*/*/*/*/*/*/*/*/*/*/*[2]/*");
     By btnCards = By.xpath("(//*[contains(@class,'HorizontalScrollView')][2]//*[contains(@class,'ImageView')])[1]");
+    By btnMenu = By.xpath("//*[@text='KEY INFO']/../following-sibling::*[1]/*/*[2]");
+    By btnKeyInfo = By.xpath("//*[@text='KEY INFO']/..");
+    By btnEzpaz = By.xpath("//*[@text='EZPaz']/..");
+    By btnMaps = By.xpath("//*[@text='MAPS']/..");
+    By btnCloseMenu = By.xpath("//*[@text='KEY INFO']/../following-sibling::*[1]/*/*[2]");
 
 }

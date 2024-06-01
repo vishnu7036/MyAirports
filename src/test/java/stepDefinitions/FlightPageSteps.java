@@ -58,7 +58,7 @@ public class FlightPageSteps {
     public void change_the_terminal_by_clicking_on_dropdown_button() {
         flightPage.clickOnDropDownChooseAirport();
         chooseAirport.verifyChooseAirportPopup();
-        chooseAirport.getAirportListAndClickByText("KLIA Terminal 2");
+        chooseAirport.selectAirportByText("KLIA Terminal 2");
     }
 
     @And("select any flight from available flights for Departure")

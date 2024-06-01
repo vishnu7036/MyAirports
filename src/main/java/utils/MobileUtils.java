@@ -191,4 +191,8 @@ public class MobileUtils {
         _driver.pressKey(new KeyEvent(AndroidKey.HOME));
     }
 
+    public String getText(By locator) {
+        return _driver.findElement(locator).getText();
+    }
+
 }

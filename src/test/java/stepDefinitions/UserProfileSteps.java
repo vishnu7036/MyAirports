@@ -26,8 +26,9 @@ public class UserProfileSteps {
     private ContactUsPage contactUsPage;
     private EditProfilePage editProfilePage;
     private FavouritesPage favouritesPage;
+    private CustomerFeedbackPage customerFeedbackPage;
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites", order = 0)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @GiveCompliment", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
@@ -41,14 +42,15 @@ public class UserProfileSteps {
         contactUsPage = new ContactUsPage(_driver);
         editProfilePage = new EditProfilePage(_driver);
         favouritesPage = new FavouritesPage(_driver);
+        customerFeedbackPage = new CustomerFeedbackPage(_driver);
     }
 
-    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites")
+    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @GiveCompliment")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites", order = 1)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @GiveCompliment", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
@@ -244,7 +246,6 @@ public class UserProfileSteps {
     }
 
 
-
     @Then("the user clicks on the Favorites icon")
     public void the_user_clicks_on_the_favorites_icon() {
         userProfilePage.clickOnFavourites();
@@ -279,5 +280,104 @@ public class UserProfileSteps {
     @Then("verifies that the user lands on the User Profile page")
     public void verifies_that_the_user_lands_on_the_user_profile_page() {
         userProfilePage.verifyUserProfilePage();
+    }
+
+
+    @When("the user clicks on the Feedback icon")
+    public void the_user_clicks_on_the_feedback_icon() {
+        userProfilePage.clickOnFeedback();
+    }
+
+    @Then("the user should land on the Feedback Page")
+    public void the_user_should_land_on_the_feedback_page() {
+        customerFeedbackPage.verifyCustomerFeedbackPage();
+    }
+
+    @And("all buttons present on the Feedback Page should be verified")
+    public void all_buttons_present_on_the_feedback_page_should_be_verified() {
+        customerFeedbackPage.verifyFileComplaintButton();
+        customerFeedbackPage.verifyGiveComplaintButton();
+        customerFeedbackPage.verifyMakeSuggestionButton();
+    }
+
+    @When("the user clicks on the File a Complaint button")
+    public void the_user_clicks_on_the_file_a_complaint_button() {
+        customerFeedbackPage.clickOnFileComplaintButton();
+    }
+
+    @Then("the user should land on the Terminal Page")
+    public void the_user_should_land_on_the_terminal_page() {
+        customerFeedbackPage.verifyTerminalPage();
+    }
+
+    @When("the user clicks on the Previous button on the Terminal Page")
+    public void the_user_clicks_on_the_previous_button_on_the_terminal_page() {
+        customerFeedbackPage.clickOnPreviousButton();
+    }
+
+    @Then("the user should be navigated back to the Feedback Page")
+    public void the_user_should_be_navigated_back_to_the_feedback_page() {
+        customerFeedbackPage.verifyCustomerFeedbackPage();
+    }
+
+    @When("the user clicks on the Make a Suggestion button again")
+    public void the_user_clicks_on_the_make_a_suggestion_button_again() {
+        customerFeedbackPage.clickOnMakeSuggestionButton();
+    }
+
+    @When("the user clicks on the Give a Compliment button again")
+    public void the_user_clicks_on_the_give_a_Compliment_button_again() {
+        customerFeedbackPage.clickOnGiveComplimentButton();
+    }
+
+    @When("the user clicks on the Close icon from the Customer Feedback Page")
+    public void the_user_clicks_on_the_close_icon_from_the_customer_feedback_page() {
+        customerFeedbackPage.clickOnCloseIcon();
+    }
+
+    @Then("the user should land back on the User Profile page")
+    public void the_user_should_land_back_on_the_user_profile_page() {
+        userProfilePage.verifyUserProfilePage();
+    }
+
+    @And("the user clicks on the Give a Compliment button")
+    public void the_user_clicks_on_the_give_a_compliment_button() {
+        customerFeedbackPage.clickOnGiveComplimentButton();
+    }
+
+    @Then("the user clicks on any one of the terminals on the Terminal Page")
+    public void the_user_clicks_on_any_one_of_the_terminals_on_the_terminal_page() {
+        customerFeedbackPage.clickOnTerminalTwo();
+    }
+
+    @And("the user should land on the Give A Compliment Page")
+    public void the_user_should_land_on_the_give_a_compliment_page() {
+        customerFeedbackPage.giveAComplimentPage().verifyGiveAComplimentPage();
+    }
+
+    @When("the user gives a compliment")
+    public void the_user_gives_a_compliment() {
+        customerFeedbackPage.giveAComplimentPage().enterCompliment("Exceptionally clean, organized");
+    }
+
+    @And("clicks on the Submit button")
+    public void clicks_on_the_submit_button() {
+        customerFeedbackPage.giveAComplimentPage().clickOnFiveStarRating();
+        customerFeedbackPage.giveAComplimentPage().clickOnSubmitButton();
+    }
+
+    @Then("the user should see the Thank You For Your Compliment popup")
+    public void the_user_should_see_the_Thank_You_For_Your_Compliment_popup() {
+        customerFeedbackPage.giveAComplimentPage().verifyThankYouForYourComplimentPopup();
+    }
+
+    @And("closes the popup")
+    public void closes_the_popup() {
+        customerFeedbackPage.giveAComplimentPage().clickOnThankYouForYourComplimentClosePopup();
+    }
+
+    @Then("the user should land back on the Home Page")
+    public void the_user_should_land_back_on_the_home_page() {
+        homePage.verifyHomePage();
     }
 }
