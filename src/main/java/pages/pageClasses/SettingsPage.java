@@ -13,7 +13,12 @@ public class SettingsPage extends MobileUtils implements SettingsPageLoc {
     }
 
     public void verifySettingsPage() {
-        isElementVisible(lblHeading, "Settings Page");
+        try{
+            Thread.sleep(2000);
+            isElementVisible(lblHeading, "Settings Page");
+        }catch(InterruptedException ignored){
+
+        }
     }
 
     public void clickOnBackIcon() {

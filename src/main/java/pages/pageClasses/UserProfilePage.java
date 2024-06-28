@@ -14,7 +14,16 @@ public class UserProfilePage extends MobileUtils implements UserProfilePageLoc {
     }
 
     public void verifyUserProfilePage() {
-        isElementVisible(lblHeading, "User Profile page");
+        try {
+            Thread.sleep(2000);
+            isElementVisible(lblHeading, "User Profile page");
+        } catch (InterruptedException ignored) {
+
+        }
+    }
+
+    public void clickOnBackButton() {
+        click(btnBack, "Back button");
     }
 
     public void clickOnLogoutButton() {

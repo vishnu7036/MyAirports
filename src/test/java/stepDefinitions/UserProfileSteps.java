@@ -28,7 +28,7 @@ public class UserProfileSteps {
     private FavouritesPage favouritesPage;
     private CustomerFeedbackPage customerFeedbackPage;
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @GiveCompliment", order = 0)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
@@ -45,12 +45,12 @@ public class UserProfileSteps {
         customerFeedbackPage = new CustomerFeedbackPage(_driver);
     }
 
-    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @GiveCompliment")
+    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @GiveCompliment", order = 1)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
@@ -379,5 +379,25 @@ public class UserProfileSteps {
     @Then("the user should land back on the Home Page")
     public void the_user_should_land_back_on_the_home_page() {
         homePage.verifyHomePage();
+    }
+
+    @Then("the user clicks on the Make A Suggestion button")
+    public void the_user_clicks_on_the_make_a_suggestion_button() {
+        customerFeedbackPage.clickOnMakeSuggestionButton();
+    }
+
+    @Then("the user should land on the Make A Suggestion Page")
+    public void the_user_should_land_on_the_make_a_suggestion_page() {
+        customerFeedbackPage.makeASuggestionPage().verifyMakeASuggestionPage();
+    }
+
+    @When("the user gives a Suggestion")
+    public void the_user_gives_a_suggestion() {
+        customerFeedbackPage.makeASuggestionPage().enterSuggestion("More signage, seating");
+    }
+
+    @Then("the user should see the Thank You For Your Valuable Suggestion Popup")
+    public void the_user_should_see_the_thank_you_for_your_valuable_suggestion_popup() {
+        customerFeedbackPage.makeASuggestionPage().verifyThankYouForYourValuableSuggestion();
     }
 }

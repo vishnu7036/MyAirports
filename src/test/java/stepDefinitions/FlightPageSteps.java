@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 public class FlightPageSteps {
     private AndroidDriver _driver;
     private HomePage homePage;
-    private FlightPage flightPage;
+    private FlightsInformationPage flightsInformationPage;
     private ChooseAirportPopup chooseAirport;
     private DeparturePage departurePage;
     private ArrivalPage arrivalPage;
@@ -22,7 +22,7 @@ public class FlightPageSteps {
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
-        flightPage = new FlightPage(_driver);
+        flightsInformationPage = new FlightsInformationPage(_driver);
         chooseAirport = new ChooseAirportPopup(_driver);
         departurePage = new DeparturePage(_driver);
         arrivalPage = new ArrivalPage(_driver);
@@ -45,25 +45,25 @@ public class FlightPageSteps {
 
     @Then("click on Arrival toggle button in the FLIGHT INFORMATION page")
     public void click_on_arrival_toggle_button_in_the_flight_information_page() {
-        flightPage.verifyFlightPage();
-        flightPage.clickOnArrivalToggle();
+        flightsInformationPage.verifyFlightsInformationPage();
+        flightsInformationPage.clickOnArrivalToggle();
     }
 
     @And("click on Departure toggle button in the FLIGHT INFORMATION page")
     public void click_on_departure_toggle_button_in_the_flight_information_page() throws InterruptedException {
-        flightPage.clickOnDepartureToggle();
+        flightsInformationPage.clickOnDepartureToggle();
     }
 
     @Then("change the terminal by clicking on dropdown button")
     public void change_the_terminal_by_clicking_on_dropdown_button() {
-        flightPage.clickOnDropDownChooseAirport();
+        flightsInformationPage.clickOnDropDownChooseAirport();
         chooseAirport.verifyChooseAirportPopup();
         chooseAirport.selectAirportByText("KLIA Terminal 2");
     }
 
     @And("select any flight from available flights for Departure")
     public void select_any_flight_from_available_flights_for_departure() {
-        flightPage.selectFlightFromDeparture();
+        flightsInformationPage.selectFlightFromDeparture();
     }
 
     @Then("click back arrow in Departure page")
@@ -74,7 +74,7 @@ public class FlightPageSteps {
 
     @Then("select any flight from available flights for Arrival")
     public void select_any_flight_from_available_flights_for_arrival() {
-        flightPage.selectFlightFromArrival();
+        flightsInformationPage.selectFlightFromArrival();
     }
 
     @And("verify the Note message in Arrival page")
@@ -90,12 +90,12 @@ public class FlightPageSteps {
 
     @Then("click on the Get previous Flights link User can see accordingly")
     public void click_on_the_get_previous_flights_link_user_can_see_accordingly() {
-        flightPage.clickOnGetPreviousFlights();
+        flightsInformationPage.clickOnGetPreviousFlights();
     }
 
     @And("click on back arrow in FLIGHT INFORMATION page")
     public void click_on_back_arrow_in_flight_information_page() {
-        flightPage.clickOnBackButton();
+        flightsInformationPage.clickOnBackButton();
     }
 
     @Then("close the mobile app")

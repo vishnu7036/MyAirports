@@ -40,4 +40,24 @@ public class ArrivalPage extends MobileUtils implements ArrivalPageLoc {
         isElementVisible(lblTerminal, "Terminal Name");
         return _driver.findElement(lblTerminal).getText();
     }
+
+    public void clickOnTrackMyFlight() {
+        click(btnTrackMyFlight, "Track My Flight button");
+    }
+
+    public void verifyYouAreNoeTrackingPopup() {
+        isElementVisible(lblYouAreTracking, "You are now Tracking");
+    }
+
+    public void clickOnDoneButton() {
+        click(btnDone, "Done button");
+    }
+
+    public String getFlightNumber() {
+        return _driver.findElement(lblFlightNum).getText();
+    }
+
+    public String getAirlineName() {
+        return _driver.findElement(lblAirline).getText();
+    }
 }

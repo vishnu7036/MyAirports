@@ -6,7 +6,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
-import pages.pageClasses.FlightPage;
+import pages.pageClasses.FlightsInformationPage;
 import pages.pageClasses.HomePage;
 import pages.pagePopups.MenuPopup;
 
@@ -16,22 +16,22 @@ public class HomePageSteps {
     private AndroidDriver _driver;
     private HomePage homePage;
     private MenuPopup menuPopup;
-    private FlightPage flightPage;
+    private FlightsInformationPage flightsInformationPage;
 
-    @Before(value = "@homePage or @flights", order = 0)
+    @Before(value = "@homePage or @flights or @menu", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
         menuPopup = new MenuPopup(_driver);
-        flightPage = new FlightPage(_driver);
+        flightsInformationPage = new FlightsInformationPage(_driver);
     }
 
-    @After("@homePage or @flights")
+    @After("@homePage or @flights or @menu")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@homePage or @flights", order = 1)
+    @Before(value = "@homePage or @flights or @menu", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
@@ -94,100 +94,244 @@ public class HomePageSteps {
 
     @Then("the user should land on the Flights Information Page")
     public void the_user_should_land_on_the_flights_information_page() {
-        flightPage.verifyFlightPage();
+        flightsInformationPage.verifyFlightsInformationPage();
     }
 
     @Then("the user navigates between the Departure and Arrival toggle buttons")
     public void the_user_navigates_between_the_departure_and_arrival_toggle_buttons() {
-        flightPage.clickOnArrivalToggle();
-        flightPage.clickOnDepartureToggle();
+        flightsInformationPage.clickOnArrivalToggle();
+        flightsInformationPage.clickOnDepartureToggle();
     }
 
     @Then("verifies that flights are loading according to the toggle buttons")
     public void verifies_that_flights_are_loading_according_to_the_toggle_buttons() {
-        flightPage.selectFlightFromDeparture();
-        flightPage.departurePage().verifyDeparturePage();
-        flightPage.departurePage().clickOnBackButton();
-        flightPage.clickOnArrivalToggle();
-        flightPage.selectFlightFromArrival();
-        flightPage.arrivalPage().verifyArrivalPage();
-        flightPage.arrivalPage().clickOnBackButton();
+        flightsInformationPage.selectFlightFromDeparture();
+        flightsInformationPage.departurePage().verifyDeparturePage();
+        flightsInformationPage.departurePage().clickOnBackButton();
+        flightsInformationPage.clickOnArrivalToggle();
+        flightsInformationPage.selectFlightFromArrival();
+        flightsInformationPage.arrivalPage().verifyArrivalPage();
+        flightsInformationPage.arrivalPage().clickOnBackButton();
     }
 
     @Then("the user clicks on the dropdown to change the Terminals")
     public void the_user_clicks_on_the_dropdown_to_change_the_terminals() {
-        flightPage.clickOnDropDownChooseAirport();
+        flightsInformationPage.clickOnDropDownChooseAirport();
     }
 
     @Then("^verifies that (.*) and (.*) are displayed in the dropdown$")
     public void verifies_that_terminal_one_and_terminal_two_are_displayed_in_the_dropdown(String terminalOne, String terminalTwo) {
-        flightPage.chooseAirportPopup().verifyAirportNameFromList(terminalOne);
-        flightPage.chooseAirportPopup().verifyAirportNameFromList(terminalTwo);
+        flightsInformationPage.chooseAirportPopup().verifyAirportNameFromList(terminalOne);
+        flightsInformationPage.chooseAirportPopup().verifyAirportNameFromList(terminalTwo);
     }
 
     @Then("the user selects one of the terminals from the dropdown")
     public void the_user_selects_one_of_the_terminals_from_the_dropdown() {
-        flightPage.chooseAirportPopup().selectAirportByText("KUL - KLIA Terminal 2");
+        flightsInformationPage.chooseAirportPopup().selectAirportByText("KUL - KLIA Terminal 2");
     }
 
     @Then("verifies that flights are displaying according to the selected terminal")
     public void verifies_that_flights_are_displaying_according_to_the_selected_terminal() throws InterruptedException {
-        flightPage.selectFlightFromArrival();
-        flightPage.verifyArrivalTerminal();
-        flightPage.arrivalPage().clickOnBackButton();
-        flightPage.clickOnDepartureToggle();
-        flightPage.selectFlightFromDeparture();
-        flightPage.verifyDepartureTerminal();
-        flightPage.departurePage().clickOnBackButton();
+        flightsInformationPage.selectFlightFromArrival();
+        flightsInformationPage.verifyArrivalTerminal();
+        flightsInformationPage.arrivalPage().clickOnBackButton();
+        flightsInformationPage.clickOnDepartureToggle();
+        flightsInformationPage.selectFlightFromDeparture();
+        flightsInformationPage.verifyDepartureTerminal();
+        flightsInformationPage.departurePage().clickOnBackButton();
     }
 
     @Then("the user searches for a flight based on the Flight Number")
     public void the_user_searches_for_a_flight_based_on_the_flight_number() {
-        flightPage.selectFlightFromDeparture();
-        String flightNumber = flightPage.departurePage().getFlightNumber();
-        flightPage.departurePage().clickOnBackButton();
-        flightPage.searchFlightByNumber(flightNumber);
-        displayedFlightNumber = flightPage.getDisplayedFlightNumber();
-        flightPage.clickOnDisplayedFlightNumber();
+        flightsInformationPage.selectFlightFromDeparture();
+        String flightNumber = flightsInformationPage.departurePage().getFlightNumber();
+        flightsInformationPage.departurePage().clickOnBackButton();
+        flightsInformationPage.searchFlightByNumber(flightNumber);
+        displayedFlightNumber = flightsInformationPage.getDisplayedFlightNumber();
+        flightsInformationPage.clickOnDisplayedFlightNumber();
     }
 
     private String displayedFlightNumber;
 
     @Then("verifies that the flight is displayed according to the Flight Number")
     public void verifies_that_the_flight_is_displayed_according_to_the_flight_number() {
-        flightPage.selectFlightFromDeparture();
-        String expFlightNumber = flightPage.departurePage().getFlightNumber();
+        flightsInformationPage.selectFlightFromDeparture();
+        String expFlightNumber = flightsInformationPage.departurePage().getFlightNumber();
         Assert.assertEquals(displayedFlightNumber, expFlightNumber);
-        flightPage.departurePage().clickOnBackButton();
+        flightsInformationPage.departurePage().clickOnBackButton();
     }
 
     @Then("the user searches for flights based on the Airline name")
     public void the_user_searches_for_flights_based_on_the_airline_name() {
-        flightPage.selectFlightFromDeparture();
-        String flightName = flightPage.departurePage().getAirlineName();
-        flightPage.departurePage().clickOnBackButton();
-        flightPage.searchFlightByAirline(flightName);
-        displayedAirlineName = flightPage.getDisplayedAirlineName();
-        flightPage.clickOnDisplayedAirlineName();
+        flightsInformationPage.selectFlightFromDeparture();
+        String flightName = flightsInformationPage.departurePage().getAirlineName();
+        flightsInformationPage.departurePage().clickOnBackButton();
+        flightsInformationPage.searchFlightByAirline(flightName);
+        displayedAirlineName = flightsInformationPage.getDisplayedAirlineName();
+        flightsInformationPage.clickOnDisplayedAirlineName();
     }
 
     private String displayedAirlineName;
 
     @Then("verifies that flights are displayed according to the Airline names")
     public void verifies_that_flights_are_displayed_according_to_the_airline_names() {
-        flightPage.selectFlightFromDeparture();
-        String expAirlineName = flightPage.departurePage().getAirlineName();
+        flightsInformationPage.selectFlightFromDeparture();
+        String expAirlineName = flightsInformationPage.departurePage().getAirlineName();
         Assert.assertEquals(displayedAirlineName, expAirlineName);
-        flightPage.departurePage().clickOnBackButton();
+        flightsInformationPage.departurePage().clickOnBackButton();
     }
 
     @Then("the user clicks on the back button from the Flights Information Page")
     public void the_user_clicks_on_the_back_button_from_the_flights_information_page() {
-        flightPage.clickOnBackButton();
+        flightsInformationPage.clickOnBackButton();
     }
 
     @Then("verifies that the user lands back on the Home Page")
     public void verifies_that_the_user_lands_back_on_the_home_page() {
         homePage.verifyHomePage();
     }
+
+    @Then("all the buttons should be displayed in the Menu")
+    public void all_the_buttons_should_be_displayed_in_the_menu() {
+        menuPopup.verifySpecialAssistanceButton();
+        menuPopup.verifyFlightsButton();
+        menuPopup.verifyPromotionsButton();
+        menuPopup.verifyOnlineShoppingButton();
+        menuPopup.verifyGeneralButton();
+        menuPopup.verifyKeyInfoButton();
+        menuPopup.verifyFeedbackButton();
+        menuPopup.verifySettingsButton();
+        menuPopup.verifyMyProfileButton();
+    }
+
+    @When("the user clicks on the SPECIAL ASSISTANCE feature in the Menu")
+    public void the_user_clicks_on_the_special_assistance_feature_in_the_menu() {
+        menuPopup.clickOnSpecialAssistanceButton();
+    }
+
+    @Then("the user should be navigated to the SPECIAL ASSISTANCE Page")
+    public void the_user_should_be_navigated_to_the_special_assistance_page() {
+        menuPopup.specialAssistancePage().verifySpecialAssistancePage();
+    }
+
+    @When("the user clicks on the Back button on the SPECIAL ASSISTANCE Page")
+    public void the_user_clicks_on_the_back_button_on_the_special_assistance_page() {
+        menuPopup.specialAssistancePage().clickOnBackButton();
+    }
+
+    @Then("the user should be navigated back to the Home Page")
+    public void the_user_should_be_navigated_back_to_the_home_page() {
+        homePage.verifyHomePage();
+    }
+
+    @When("the user clicks on the Menu button again")
+    public void the_user_clicks_on_the_menu_button_again() {
+        homePage.clickOnMenuButton();
+    }
+
+    @And("the user selects the FLIGHTS feature in the Menu")
+    public void the_user_selects_the_flights_feature_in_the_menu() {
+        menuPopup.clickOnFlightsButton();
+    }
+
+    @Then("the user should be navigated to the FLIGHTS Information Page")
+    public void the_user_should_be_navigated_to_the_flights_information_page() {
+        menuPopup.flightPage().verifyFlightsInformationPage();
+    }
+
+    @When("the user clicks on the Back button on the FLIGHTS Information Page")
+    public void the_user_clicks_on_the_back_button_on_the_flights_information_page() {
+        menuPopup.flightPage().clickOnBackButton();
+    }
+
+    @And("the user selects the PROMOTIONS feature in the Menu")
+    public void the_user_selects_the_promotions_feature_in_the_menu() {
+        menuPopup.clickOnPromotionsButton();
+    }
+
+    @Then("the user should be navigated to the PROMOTIONS Page")
+    public void the_user_should_be_navigated_to_the_promotions_page() {
+        menuPopup.promotionsPage().verifyPromotionsPage();
+    }
+
+    @When("the user clicks on the Back button on the PROMOTIONS Page")
+    public void the_user_clicks_on_the_back_button_on_the_promotions_page() {
+        menuPopup.promotionsPage().clickOnBackButton();
+    }
+
+    @And("the user selects the GENERAL feature in the Menu")
+    public void the_user_selects_the_general_feature_in_the_menu() {
+        menuPopup.clickOnGeneralButton();
+    }
+
+    @Then("the user should be navigated to the GENERAL Page")
+    public void the_user_should_be_navigated_to_the_general_page() {
+        menuPopup.generalPage().verifyGeneralPage();
+    }
+
+    @When("the user clicks on the Back button on the GENERAL Page")
+    public void the_user_clicks_on_the_back_button_on_the_general_page() {
+        menuPopup.generalPage().clickOnBackButton();
+    }
+
+    @And("the user selects the KEY INFO feature in the Menu")
+    public void the_user_selects_the_key_info_feature_in_the_menu() {
+        menuPopup.clickOnKeyInfoButton();
+    }
+
+    @Then("the user should be navigated to the KEY INFO Page")
+    public void the_user_should_be_navigated_to_the_key_info_page() {
+        menuPopup.keyInfoPage().verifyKeyInfoPage();
+    }
+
+    @When("the user clicks on the Back button on the KEY INFO Page")
+    public void the_user_clicks_on_the_back_button_on_the_key_info_page() {
+        menuPopup.keyInfoPage().clickOnBackButton();
+    }
+
+    @And("the user selects the FEEDBACK feature in the Menu")
+    public void the_user_selects_the_feedback_feature_in_the_menu() {
+        menuPopup.clickOnFeedbackButton();
+    }
+
+    @Then("the user should be navigated to the FEEDBACK Page")
+    public void the_user_should_be_navigated_to_the_feedback_page() {
+        menuPopup.customerFeedbackPage().verifyCustomerFeedbackPage();
+    }
+
+    @When("the user clicks on the Back button on the FEEDBACK Page")
+    public void the_user_clicks_on_the_back_button_on_the_feedback_page() {
+        menuPopup.customerFeedbackPage().clickOnCloseIcon();
+    }
+
+    @And("the user selects the SETTINGS feature in the Menu")
+    public void the_user_selects_the_settings_feature_in_the_menu() {
+        menuPopup.clickOnSettingsButton();
+    }
+
+    @Then("the user should be navigated to the SETTINGS Page")
+    public void the_user_should_be_navigated_to_the_settings_page() {
+        menuPopup.settingsPage().verifySettingsPage();
+    }
+
+    @When("the user clicks on the Back button on the SETTINGS Page")
+    public void the_user_clicks_on_the_back_button_on_the_settings_page() {
+        menuPopup.settingsPage().clickOnBackIcon();
+    }
+
+    @And("the user selects the MY PROFILE feature in the Menu")
+    public void the_user_selects_the_my_profile_feature_in_the_menu() {
+        menuPopup.clickOnMyProfileButton();
+    }
+
+    @Then("the user should be navigated to the MY PROFILE Page")
+    public void the_user_should_be_navigated_to_the_my_profile_page() {
+        menuPopup.userProfilePage().verifyUserProfilePage();
+    }
+
+    @When("the user clicks on the Back button on the MY PROFILE Page")
+    public void the_user_clicks_on_the_back_button_on_the_my_profile_page() {
+        menuPopup.userProfilePage().clickOnBackButton();
+    }
+
 }

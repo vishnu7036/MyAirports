@@ -1,8 +1,6 @@
 package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import org.openqa.selenium.By;
 import pages.pageLocators.GeneralPageLoc;
 import utils.MobileUtils;
 
@@ -28,14 +26,19 @@ public class GeneralPage extends MobileUtils implements GeneralPageLoc {
     }
 
     public void verifyGeneralPage() {
-        isElementVisible(lblGeneralHeading, "General page");
+        try{
+            Thread.sleep(2000);
+            isElementVisible(lblGeneralHeading, "General page");
+        }catch(InterruptedException ignored){
+
+        }
     }
 
     public void verifyAboutPage() {
         isElementVisible(lblAboutHeading, "About page");
     }
 
-    public void clickOnBackButtonFromGeneralPage() {
+    public void clickOnBackButton() {
         click(btnBackGeneral, "General back button");
     }
 

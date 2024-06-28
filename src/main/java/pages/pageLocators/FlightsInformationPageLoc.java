@@ -2,7 +2,7 @@ package pages.pageLocators;
 
 import org.openqa.selenium.By;
 
-public interface FlightPageLoc {
+public interface FlightsInformationPageLoc {
     default By getElement(String text){
         return By.xpath(String.format("//*[@text='%s']",text));
     }
@@ -16,4 +16,5 @@ public interface FlightPageLoc {
     By lblFlightNumFromDeparture = By.xpath("//*[@text='Departure']/../../../following-sibling::*[1]/*/*/*/*[1]/*/*[4]");
     By lblFlightNumFromArrival = By.xpath("//*[@text='Arrival']/../../../following-sibling::*[1]/*/*/*/*[1]/*/*[4]");
     By lblFlightDetails = By.xpath("//*[@text='FLIGHT INFORMATION']/following-sibling::*[3]/*[4]/*/*/*/*/*");
+    By lblFlightStatus = By.xpath("//*[@text='FLIGHT INFORMATION']/following-sibling::*[4]/*/*/*/*/*/*[last()]");
 }

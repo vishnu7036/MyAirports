@@ -25,22 +25,38 @@ public class DeparturePage extends MobileUtils implements DeparturePageLoc {
         click(btnBack, "Back button");
     }
 
-    public String verifyTerminal() throws InterruptedException {
+    public String getTerminal() throws InterruptedException {
         Thread.sleep(2000);
         isElementVisible(lblTerminal, "Terminal Name");
-        return _driver.findElement(lblTerminal).getText();
+        return getText(lblTerminal);
     }
 
     public String getFlightNumber() {
-        return _driver.findElement(lblFlightNum).getText();
+        return getText(lblFlightNum);
     }
 
     public String getAirlineName() {
-        return _driver.findElement(lblAirline).getText();
+        return getText(lblAirline);
+    }
+
+    public String getBoardingGate() {
+        return getText(lblBoardingGate);
+    }
+
+    public String getCheckInCounter() {
+        return getText(lblCheckInCounter);
     }
 
     public void clickOnTrackMyFlight() {
         click(btnTrackMyFlight, "Track My Flight button");
+    }
+
+    public void verifyYouAreNoeTrackingPopup() {
+        isElementVisible(lblYouAreTracking, "You are now Tracking");
+    }
+
+    public void clickOnDoneButton() {
+        click(btnDone, "Done button");
     }
 
 }

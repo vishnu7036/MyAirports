@@ -6,7 +6,7 @@ import utils.CommonFunctions;
 import utils.MobileUtils;
 
 public class CustomerFeedbackPage extends MobileUtils implements CustomerFeedbackPageLoc {
-    private AndroidDriver _driver;
+    private final AndroidDriver _driver;
 
     public CustomerFeedbackPage(AndroidDriver driver) {
         super(driver);
@@ -14,7 +14,12 @@ public class CustomerFeedbackPage extends MobileUtils implements CustomerFeedbac
     }
 
     public void verifyCustomerFeedbackPage() {
-        isElementVisible(lblHeading, "Customer Feedback");
+        try{
+            Thread.sleep(2000);
+            isElementVisible(lblHeading, "Customer Feedback");
+        }catch(InterruptedException ignored){
+
+        }
     }
 
     public void verifyFileComplaintButton() {
@@ -78,5 +83,8 @@ public class CustomerFeedbackPage extends MobileUtils implements CustomerFeedbac
     }
     public GiveAComplimentPage giveAComplimentPage(){
         return new GiveAComplimentPage(_driver);
+    }
+    public MakeASuggestionPage makeASuggestionPage(){
+        return new MakeASuggestionPage(_driver);
     }
 }

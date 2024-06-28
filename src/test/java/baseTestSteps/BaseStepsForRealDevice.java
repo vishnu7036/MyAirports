@@ -1,8 +1,10 @@
 package baseTestSteps;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.pageClasses.WelcomePage;
 
 import java.net.MalformedURLException;
@@ -13,11 +15,11 @@ If you are starting the appium server programmatically then the URL should be "h
 If you are starting the appium server manually through Desktop/cmd then the URL should be "http://127.0.0.1:4723/wd/hub"
  */
 
-public class BaseSteps {
+public class BaseStepsForRealDevice {
 
     public static AndroidDriver driver;
     public static AppiumDriverLocalService service;
-    public final static int time_out = 60;
+    public final static int time_out = 40;
     public static WelcomePage welcomePage;
 
     public static AndroidDriver getDriver() throws MalformedURLException {
@@ -25,14 +27,26 @@ public class BaseSteps {
 //        service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//Mind-Graph//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
 //                .withIPAddress("127.0.0.1").usingPort(4723).build();
 //        service.start();
-        UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Pixel 6 pro API 30");
-        options.setApp(dir + "//src//main//ApkFile//prod.apk");
-        options.setUdid("emulator-5554");
-        options.setPlatformName("Android");
-        options.setPlatformVersion("Android 11");
+//        UiAutomator2Options options = new UiAutomator2Options();
+//        options.setDeviceName("realme 10 Pro+5G");
+//        options.setUdid("4TDA8HV85D7H7T4T");
+//        options.setPlatformName("Android");
+//        options.setPlatformVersion("Android 14");
+//        options.setAppPackage("Klia.mahb.ios");
+//        options.setAppActivity("Klia.mahb.ios.MainActivity");
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("deviceName", "realme 10 Pro+5G");
+        caps.setCapability("udid", "8P7LKVVONZMBBUY5");
+        caps.setCapability("platformName", "Android");
+        caps.setCapability("platformVersion", "Android 14");
+        caps.setCapability("appPackage", "klia.mahb.ios");
+        caps.setCapability("appActivity", "klia.mahb.ios.MainActivity");
+
         URL url = new URL("http://127.0.0.1:4723/wd/hub");
-        driver = new AndroidDriver(url, options);
+        driver = new AndroidDriver(url, caps);
+//        driver = new AppiumDriver(url, caps);
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time_out));
         return driver;
     }

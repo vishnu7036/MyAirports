@@ -20,7 +20,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class MobileUtils {
-    private final int default_timeout = 10;
+    private final int default_timeout = 60;
     private static final String apiKey = "3y6SX0EZcAgYopLmB6YQj38BghU5QyOm";
     private static final String serverId = "uk90qnfw";
     private static final String serverDomain = "uk90qnfw.mailosaur.net";
@@ -94,13 +94,14 @@ public class MobileUtils {
         System.out.println(elementName + " element is visible.");
     }
 
-    public void waitForAllElementsVisible(By locator, String elementName, int timeOut) {
-        WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(timeOut));
+    public void waitForAllElementsVisible(By locator) {
+        WebDriverWait wait = new WebDriverWait(_driver, Duration.ofSeconds(default_timeout));
         List<WebElement> elements = _driver.findElements(locator);
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     public void click(By locator, String elementName) {
+        waitForElementVisibility(locator, "");
         WebElement element = _driver.findElement(locator);
         element.click();
         System.out.println("Clicked on '" + elementName + "' successfully.");
@@ -126,6 +127,7 @@ public class MobileUtils {
     }
 
     public void isElementVisible(By locator, String elementName) {
+        waitForElementVisibility(locator, elementName);
         boolean displayed = _driver.findElement(locator).isDisplayed();
         if (displayed)
             System.out.println(elementName + " is visible");

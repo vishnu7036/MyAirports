@@ -3,9 +3,12 @@ package pages.pageClasses;
 import io.appium.java_client.android.AndroidDriver;
 import net.bytebuddy.utility.RandomString;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.pageLocators.StoresPageLoc;
 import utils.MobileUtils;
 
+import java.time.Duration;
 import java.util.List;
 
 public class StoresPage extends MobileUtils implements StoresPageLoc {
@@ -17,10 +20,16 @@ public class StoresPage extends MobileUtils implements StoresPageLoc {
     }
 
     public void verifyStoresPage() {
-        isElementVisible(lblHeading, "Stores page");
+        try {
+            Thread.sleep(3000);
+            isElementVisible(lblHeading, "Stores page");
+        } catch (InterruptedException ignored) {
+
+        }
     }
 
     public void clickOnBackIcon() {
+        this.waitForAllStoresVisible();
         click(btnBack, "Back button in Stores");
     }
 
@@ -31,20 +40,20 @@ public class StoresPage extends MobileUtils implements StoresPageLoc {
     public void clickOnAnyOneOfStore() {
         try {
             Thread.sleep(2000);
-            waitForAllElementsVisible(allStores, "All Stores", 20);
+            waitForAllElementsVisible(allStores);
             getElements(allStores).stream().findFirst().ifPresent(WebElement::click);
         } catch (Exception e) {
 
         }
     }
-    public void waitForAllStoresVisible(){
-        try{
+
+    public void waitForAllStoresVisible() {
+        try {
             Thread.sleep(2000);
-            waitForAllElementsVisible(allStores, "All Stores", 20);
-        }catch (Exception e){
+            waitForAllElementsVisible(allStores);
+        } catch (Exception e) {
 
         }
-
     }
 
     public String getTextFromAnyOneOfStore() {
@@ -54,7 +63,7 @@ public class StoresPage extends MobileUtils implements StoresPageLoc {
     public void clickOnTerminalDropDown() {
         try {
             Thread.sleep(2000);
-            waitForAllElementsVisible(allStores, "All stores", 20);
+            waitForAllElementsVisible(allStores);
             click(ddTerminal, "Drop Down");
         } catch (Exception e) {
 

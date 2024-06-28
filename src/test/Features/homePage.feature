@@ -30,3 +30,56 @@ Feature: Verify Home Page Functionality
     Examples:
       | Terminal one          | Terminal two          |
       | KUL - KLIA Terminal 1 | KUL - KLIA Terminal 2 |
+
+  @menu
+  Scenario: Verify the menu button functionality
+    Given the user is on the Home Page
+    When the user clicks on the Menu button from the Home Page
+    Then all the buttons should be displayed in the Menu
+
+    When the user clicks on the SPECIAL ASSISTANCE feature in the Menu
+    Then the user should be navigated to the SPECIAL ASSISTANCE Page
+    When the user clicks on the Back button on the SPECIAL ASSISTANCE Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the FLIGHTS feature in the Menu
+    Then the user should be navigated to the FLIGHTS Information Page
+    When the user clicks on the Back button on the FLIGHTS Information Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the PROMOTIONS feature in the Menu
+    Then the user should be navigated to the PROMOTIONS Page
+    When the user clicks on the Back button on the PROMOTIONS Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the GENERAL feature in the Menu
+    Then the user should be navigated to the GENERAL Page
+    When the user clicks on the Back button on the GENERAL Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the KEY INFO feature in the Menu
+    Then the user should be navigated to the KEY INFO Page
+    When the user clicks on the Back button on the KEY INFO Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the FEEDBACK feature in the Menu
+    Then the user should be navigated to the FEEDBACK Page
+    When the user clicks on the Back button on the FEEDBACK Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the SETTINGS feature in the Menu
+    Then the user should be navigated to the SETTINGS Page
+    When the user clicks on the Back button on the SETTINGS Page
+    Then the user should be navigated back to the Home Page
+
+    When the user clicks on the Menu button again
+    And the user selects the MY PROFILE feature in the Menu
+    Then the user should be navigated to the MY PROFILE Page
+    When the user clicks on the Back button on the MY PROFILE Page
+    Then the user should be navigated back to the Home Page

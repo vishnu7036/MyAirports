@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import baseTestSteps.BaseSteps;
+import baseTestSteps.BaseStepsForRealDevice;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -55,7 +56,7 @@ public class WelcomePageSteps {
 
     @Then("the user clicks on CHINESE in the Welcome Page")
     public void the_user_clicks_on_chinese_in_the_welcome_page() {
-         welcomePage.clickOnChineseLink();
+        welcomePage.clickOnChineseLink();
     }
 
     @And("verifies that the app language changes in CHINESE language")

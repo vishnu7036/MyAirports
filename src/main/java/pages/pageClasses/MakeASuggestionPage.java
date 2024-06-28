@@ -1,28 +1,28 @@
 package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
-import pages.pageLocators.GiveAComplimentPageLoc;
+import pages.pageLocators.MakeASuggestionPageLoc;
 import utils.CommonFunctions;
 import utils.MobileUtils;
 
-public class GiveAComplimentPage extends MobileUtils implements GiveAComplimentPageLoc {
+public class MakeASuggestionPage extends MobileUtils implements MakeASuggestionPageLoc {
     private final AndroidDriver _driver;
 
-    public GiveAComplimentPage(AndroidDriver driver) {
+    public MakeASuggestionPage(AndroidDriver driver) {
         super(driver);
         this._driver = driver;
     }
 
-    public void verifyGiveAComplimentPage() {
-        isElementVisible(lblHeading, "Give A Compliment Page");
+    public void verifyMakeASuggestionPage() {
+        isElementVisible(lblHeading, "Make A Suggestion Page");
     }
 
     public void clickOnBackButton() {
-        click(btnBack, "Back button");
+        click(btnBack, "Back Button");
     }
 
-    public void enterCompliment(String text) {
-        enterText(txtCompliment, text, "Give A Compliment");
+    public void enterSuggestion(String text) {
+        enterText(txtSuggestion, text, "Give Your Suggestion");
     }
 
     public void verifyRateOfExperienceLabel() {
@@ -46,15 +46,14 @@ public class GiveAComplimentPage extends MobileUtils implements GiveAComplimentP
     }
 
     public void clickOnFiveStarRating() {
-        hideKeyboard();
         click(giveRating("5"), "1 Star Rating");
     }
 
-    public void verifyThankYouForYourComplimentPopup() {
-        isElementVisible(lblThankForYourCompliment, "Thank You For Your Compliment popup");
+    public void verifyThankYouForYourValuableSuggestion() {
+        isElementVisible(lblValuableSuggestion, "Thank You For Your Valuable Suggestion popup");
     }
 
-    public void clickOnThankYouForYourComplimentClosePopup() {
+    public void clickOnThankYouForYourValuableSuggestionClosePopup() {
         click(btnClose, "Close button");
     }
 

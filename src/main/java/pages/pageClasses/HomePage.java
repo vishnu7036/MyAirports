@@ -2,7 +2,9 @@ package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.Assert;
+import pages.pageLocators.DinningPageLoc;
 import pages.pageLocators.HomePageLoc;
+import utils.CommonFunctions;
 import utils.MobileUtils;
 
 public class HomePage extends MobileUtils implements HomePageLoc {
@@ -191,49 +193,81 @@ public class HomePage extends MobileUtils implements HomePageLoc {
         isElementVisible(btnChatBoat, "Chat Bot image");
     }
 
-    public void clickOnButterflyCard() {
+    public void clickOnButterflyCarouselCard() {
         try {
             Thread.sleep(5000);
             for (int i = 0; i < 3; i++)
                 scrollLeft(500);
-            click(btnCards, "Card");
-        } catch (Exception e) {
+            click(btnCards, "Butterfly Carousel Card");
+        } catch (Exception ignored) {
 
         }
     }
-    public void verifyHomeButton(){
-        isElementVisible(btnHome,"Home button");
-    }
-    public void verifyKeyInfoButton(){
-        isElementVisible(btnKeyInfo,"Key Info button");
-    }
-    public void verifyEzpazButton(){
-        isElementVisible(btnEzpaz,"EZpaz button");
-    }
-    public void verifyMapsButton(){
-        isElementVisible(btnMaps,"Maps button");
-    }
-    public void verifyMenuButton(){
-        isElementVisible(btnMenu,"Menu button");
+
+    public void clickOnPlanMyJourneyCarouselCard() {
+        click(btnCards, "Plan My Journey Carousel Card");
+        new CommonFunctions(_driver).clickOnOkButton();
     }
 
-    public void clickOnHomeButton(){
-        click(btnHome,"Home button");
-    }
-    public void clickOnKeyInfoButton(){
-        click(btnKeyInfo,"Key Info button");
-    }
-    public void clickOnEzpazButton(){
-        click(btnEzpaz,"EZpaz button");
-    }
-    public void clickOnMapsButton(){
-        click(btnMaps,"Maps button");
-    }
-    public void clickOnMenuButton(){
-        click(btnMenu,"Menu button");
-    }
-    public void clickOnCloseMenuButton(){
-        click(btnCloseMenu,"Close Menu button");
+    public void clickOnFlightsCarouselCard() {
+        scrollLeft(500);
+        click(btnCards, "Flights Carousel Card");
     }
 
+
+    public void verifyHomeButton() {
+        isElementVisible(btnHome, "Home button");
+    }
+
+    public void verifyKeyInfoButton() {
+        isElementVisible(btnKeyInfo, "Key Info button");
+    }
+
+    public void verifyEzpazButton() {
+        isElementVisible(btnEzpaz, "EZpaz button");
+    }
+
+    public void verifyMapsButton() {
+        isElementVisible(btnMaps, "Maps button");
+    }
+
+    public void verifyMenuButton() {
+        isElementVisible(btnMenu, "Menu button");
+    }
+
+    public void clickOnHomeButton() {
+        click(btnHome, "Home button");
+    }
+
+    public void clickOnKeyInfoButton() {
+        click(btnKeyInfo, "Key Info button");
+    }
+
+    public void clickOnEzpazButton() {
+        click(btnEzpaz, "EZpaz button");
+    }
+
+    public void clickOnMapsButton() {
+        click(btnMaps, "Maps button");
+    }
+
+    public void clickOnMenuButton() {
+        click(btnMenu, "Menu button");
+    }
+
+    public void clickOnCloseMenuButton() {
+        click(btnCloseMenu, "Close Menu button");
+    }
+
+    public StoresPage storesPage() {
+        return new StoresPage(_driver);
+    }
+
+    public DinningPage dinningPage() {
+        return new DinningPage(_driver);
+    }
+
+    public BookingServicePage bookingServicePage() {
+        return new BookingServicePage(_driver);
+    }
 }

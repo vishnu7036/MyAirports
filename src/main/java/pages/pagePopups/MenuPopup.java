@@ -1,6 +1,7 @@
 package pages.pagePopups;
 
 import io.appium.java_client.android.AndroidDriver;
+import pages.pageClasses.*;
 import pages.popupLocators.MenuPopupLoc;
 import utils.MobileUtils;
 
@@ -53,7 +54,7 @@ public class MenuPopup extends MobileUtils implements MenuPopupLoc {
     }
 
     public void clickOnSpecialAssistanceButton() {
-        isElementVisible(getText("SPECIAL ASSISTANCE"), "SPECIAL ASSISTANCE button");
+        click(getText("SPECIAL ASSISTANCE"), "SPECIAL ASSISTANCE button");
     }
 
     public void clickOnFlightsButton() {
@@ -86,6 +87,38 @@ public class MenuPopup extends MobileUtils implements MenuPopupLoc {
 
     public void clickOnMyProfileButton() {
         click(getText("MY PROFILE"), "MY PROFILE button");
+    }
+
+    public SpecialAssistancePage specialAssistancePage() {
+        return new SpecialAssistancePage(_driver);
+    }
+
+    public FlightsInformationPage flightPage() {
+        return new FlightsInformationPage(_driver);
+    }
+
+    public PromotionsPage promotionsPage() {
+        return new PromotionsPage(_driver);
+    }
+
+    public GeneralPage generalPage() {
+        return new GeneralPage(_driver);
+    }
+
+    public KeyInfoPage keyInfoPage() {
+        return new KeyInfoPage(_driver);
+    }
+
+    public CustomerFeedbackPage customerFeedbackPage() {
+        return new CustomerFeedbackPage(_driver);
+    }
+
+    public SettingsPage settingsPage() {
+        return new SettingsPage(_driver);
+    }
+
+    public UserProfilePage userProfilePage() {
+        return new UserProfilePage(_driver);
     }
 
 }

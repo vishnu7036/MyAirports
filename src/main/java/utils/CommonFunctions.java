@@ -5,11 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class CommonFunctions extends MobileUtils {
-    private By btnBack = By.xpath("(//*[@class='android.widget.ImageView'])[2]");
-    private By btnSave = By.xpath("//*[@text='SAVE']");
-    private By btnSubmit = By.xpath("//*[@text='SUBMIT']");
+    private final By btnBack = By.xpath("(//*[@class='android.widget.ImageView'])[2]");
+    private final By btnSave = By.xpath("//*[@text='SAVE']");
+    private final By btnSubmit = By.xpath("//*[@text='SUBMIT']");
+    private final By btnOk = By.xpath("//*[@text='OK']");
 
-    private AndroidDriver _driver;
+    private final AndroidDriver _driver;
 
     public CommonFunctions(AndroidDriver driver) {
         super(driver);
@@ -30,4 +31,7 @@ public class CommonFunctions extends MobileUtils {
         click(btnSave, "Save button");
     }
 
+    public void clickOnOkButton() {
+        click(btnOk, "Ok button");
+    }
 }
