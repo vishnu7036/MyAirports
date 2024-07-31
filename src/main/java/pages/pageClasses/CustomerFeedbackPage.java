@@ -87,4 +87,47 @@ public class CustomerFeedbackPage extends MobileUtils implements CustomerFeedbac
     public MakeASuggestionPage makeASuggestionPage(){
         return new MakeASuggestionPage(_driver);
     }
+    public void verifyAreYouPassengerPage(){
+        isElementVisible(lblPassenger,"Are you a Passenger");
+    }
+    public void clickOnYesRadioButton(){
+        click(radBtnYes,"Yes Radio button");
+    }
+    public void clickOnNoRadioButton(){
+        click(radBtnNo,"No Radio button");
+    }
+    public void verifyIamPassengerPage(){
+        isElementVisible(lblIamPassenger,"I am passenger");
+    }
+    public void verifyPleaseSelectYouTravelLabel(){
+        isElementVisible(lblSelectYourTravel,"Please select your travel");
+    }
+    public void clickOnInternationalRadioButton(){
+        click(radBtnInternational,"International Radio button");
+    }
+    public void clickOnDomesticRadioButton(){
+        click(radBtnDomestic,"Domestic Radio button");
+    }
+    public void verifyYouAreLabel(){
+        isElementVisible(lblYouAre,"You are/were.....");
+    }
+    public void clickOnDepartingRadioButton(){
+        click(radBtnDeparting,"Departing Radio button");
+    }
+    public void clickOnArrivingRadioButton(){
+        click(radBtnArriving,"Arriving Radio button");
+    }
+    public void clickOnTransitRadioButton(){
+        click(radBtnTransit,"Transit Radio button");
+    }
+    public void verifyAreaOfComplaintOptionPage(){
+        isElementVisible(lblAreaOfYourComplaint,"Select the area of you Complaint");
+    }
+    public void clickOnToiletsButton(){
+        click(btnToilets,"Toilets Option");
+    }
+    public RegisterComplaintPage registerComplaintPage(){
+        return new RegisterComplaintPage(_driver);
+    }
+
 }

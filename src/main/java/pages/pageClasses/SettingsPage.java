@@ -26,6 +26,6 @@ public class SettingsPage extends MobileUtils implements SettingsPageLoc {
     }
 
     public void clickOnChangePassword() {
-        click(btnChangePasword, "Change password");
+        click(btnChangePassword, "Change password");
     }
 }

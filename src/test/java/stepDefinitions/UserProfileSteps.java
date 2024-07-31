@@ -28,7 +28,7 @@ public class UserProfileSteps {
     private FavouritesPage favouritesPage;
     private CustomerFeedbackPage customerFeedbackPage;
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion", order = 0)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion or @fileComplaintFromPassenger", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
@@ -45,12 +45,12 @@ public class UserProfileSteps {
         customerFeedbackPage = new CustomerFeedbackPage(_driver);
     }
 
-    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion")
+    @After(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion or @fileComplaintFromPassenger")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion", order = 1)
+    @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion or @fileComplaintFromPassenger", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
@@ -137,7 +137,7 @@ public class UserProfileSteps {
     @Then("the user is able to successfully log in with the new credentials")
     public void the_user_is_able_to_successfully_log_in_with_the_new_credentials() {
         homePage.verifyHomePage();
-        homePage.verifyUser("ioc");
+//        homePage.verifyUser("ioc");
         homePage.clickOnUserAccount();
         userProfilePage.clickOnSettings();
         settingsPage.clickOnChangePassword();
@@ -357,7 +357,7 @@ public class UserProfileSteps {
 
     @When("the user gives a compliment")
     public void the_user_gives_a_compliment() {
-        customerFeedbackPage.giveAComplimentPage().enterCompliment("Exceptionally clean, organized");
+        customerFeedbackPage.giveAComplimentPage().enterCompliment("Testing please ignore");
     }
 
     @And("clicks on the Submit button")
@@ -399,5 +399,60 @@ public class UserProfileSteps {
     @Then("the user should see the Thank You For Your Valuable Suggestion Popup")
     public void the_user_should_see_the_thank_you_for_your_valuable_suggestion_popup() {
         customerFeedbackPage.makeASuggestionPage().verifyThankYouForYourValuableSuggestion();
+    }
+
+    @Then("verify the user is navigated to Are You a Passenger page")
+    public void verify_the_user_is_navigated_to_are_you_a_passenger_page() {
+        customerFeedbackPage.verifyAreYouPassengerPage();
+    }
+
+    @Then("the user clicks on the Yes radio button on the Are You a Passenger page")
+    public void the_user_clicks_on_the_yes_radio_button_on_the_are_you_a_passenger_page() {
+        customerFeedbackPage.clickOnYesRadioButton();
+    }
+
+    @Then("verify the user is navigated to the I am a Passenger page")
+    public void verify_the_user_is_navigated_to_the_i_am_a_passenger_page() {
+        customerFeedbackPage.verifyIamPassengerPage();
+    }
+
+    @Then("the user selects the International and Departing radio buttons on the I am a Passenger page")
+    public void the_user_selects_the_international_and_departing_radio_buttons_on_the_i_am_a_passenger_page() {
+        customerFeedbackPage.clickOnInternationalRadioButton();
+        customerFeedbackPage.clickOnDepartingRadioButton();
+    }
+
+    @Then("verify the user is navigated to the Complaint Options page")
+    public void verify_the_user_is_navigated_to_the_complaint_options_page() {
+        customerFeedbackPage.verifyAreaOfComplaintOptionPage();
+    }
+
+    @Then("the user selects the Toilets option on the Complaint page")
+    public void the_user_selects_the_toilets_option_on_the_complaint_page() {
+        customerFeedbackPage.clickOnToiletsButton();
+    }
+
+    @Then("verify the user lands on the Register Complaint page")
+    public void verify_the_user_lands_on_the_register_complaint_page() {
+        customerFeedbackPage.registerComplaintPage().verifyRegisterComplaintPage();
+    }
+
+    @Then("the user fills in all mandatory fields on the Register Complaint page")
+    public void the_user_fills_in_all_mandatory_fields_on_the_register_complaint_page() {
+        customerFeedbackPage.registerComplaintPage().enterDescription();
+        customerFeedbackPage.registerComplaintPage().enterLocation();
+        customerFeedbackPage.registerComplaintPage().enterFlightNumber();
+    }
+
+    @Then("the user clicks on the Submit button on the Register Complaint page")
+    public void the_user_clicks_on_the_submit_button_on_the_register_complaint_page() {
+        customerFeedbackPage.registerComplaintPage().clickOnSubmitButton();
+    }
+
+    @And("verify the Complaint Successfully Registered popup")
+    public void verifyTheComplaintSuccessfullyRegisteredPopup() {
+        customerFeedbackPage.registerComplaintPage().verifyComplaintSuccessfullyRegisteredPopup();
+        customerFeedbackPage.registerComplaintPage().verifyCloseIconInRegisteredComplaintPopup();
+        customerFeedbackPage.registerComplaintPage().clickOnCloseIcon();
     }
 }

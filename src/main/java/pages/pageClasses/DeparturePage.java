@@ -32,18 +32,22 @@ public class DeparturePage extends MobileUtils implements DeparturePageLoc {
     }
 
     public String getFlightNumber() {
+        waitForElementVisibility(lblFlightNum,"Flight Number");
         return getText(lblFlightNum);
     }
 
     public String getAirlineName() {
+        waitForElementVisibility(lblAirline,"Airline");
         return getText(lblAirline);
     }
 
     public String getBoardingGate() {
+        waitForElementVisibility(lblBoardingGate,"Boarding gate");
         return getText(lblBoardingGate);
     }
 
     public String getCheckInCounter() {
+        waitForElementVisibility(lblCheckInCounter,"Check In Counter");
         return getText(lblCheckInCounter);
     }
 

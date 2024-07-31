@@ -11,6 +11,7 @@ import java.util.List;
 
 public class FlightsInformationPage extends MobileUtils implements FlightsInformationPageLoc {
     private AndroidDriver _driver;
+    public String flightNum;
 
     public FlightsInformationPage(AndroidDriver driver) {
         super(driver);
@@ -138,9 +139,24 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
         return getText(lblFlightDetails);
     }
 
-    public void clickOnFlightToTrackTheFlight() throws InterruptedException {
-        int clickCount = 0;
-        while (clickCount < 2) {
+    public String clickOnTrackMyFlight() throws InterruptedException {
+        String flightNum = departurePage().getFlightNumber();
+        departurePage().clickOnTrackMyFlight();
+        departurePage().verifyYouAreNoeTrackingPopup();
+        departurePage().clickOnDoneButton();
+        Thread.sleep(3000);
+        departurePage().clickOnBackButton();
+        Thread.sleep(3000);
+        return flightNum;
+    }
+
+    public String getFlightNumberFromDepartureFlight() {
+        return flightNum;
+    }
+
+    public void clickOnFlight() throws InterruptedException {
+        boolean found = false;
+        while (!found) {
             List<WebElement> list = _driver.findElements(lblFlightStatus);
             list.remove(list.size() - 1);
             for (WebElement ele : list) {
@@ -148,18 +164,11 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
                 if (!text.contains("CLOSED") && !text.contains("DEPART")) {
                     ele.click();
                     Thread.sleep(3000);
-                    departurePage().clickOnTrackMyFlight();
-                    departurePage().verifyYouAreNoeTrackingPopup();
-                    departurePage().clickOnDoneButton();
-                    Thread.sleep(3000);
-                    departurePage().clickOnBackButton();
-                    Thread.sleep(3000);
-                    clickCount++;
-                    if (clickCount >= 2)
-                        break;
+                    found = true;
+                    break;
                 }
             }
-            if (clickCount < 2) {
+            if (!found) {
                 scrollUp();
             }
         }
@@ -194,6 +203,7 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
             List<WebElement> list = _driver.findElements(lblFlightStatus);
             list.remove(list.size() - 1);
             for (WebElement ele : list) {
+                Thread.sleep(1000);
                 String text = ele.getText();
                 if (!text.contains("CLOSED") && !text.contains("DEPART")) {
                     ele.click();

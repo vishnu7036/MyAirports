@@ -9,29 +9,32 @@ import pages.pageClasses.*;
 
 import java.net.MalformedURLException;
 
-public class HomePageCarouselSlidesSteps {
+public class HomePageCarouselCardSteps {
     private AndroidDriver _driver;
     private HomePage homePage;
     private ButterflyEffectPage butterflyEffectPage;
     private FlightsInformationPage flightsInformationPage;
     private PlanYourJourneyPage planYourJourneyPage;
+    private PromotionsPage promotionsPage;
+    private TrackMyFlightPage trackMyFlightPage;
 
-
-    @Before(value = "@butterflyEffect or @trackMyFlight or @planMyJourney", order = 0)
+    @Before(value = "@butterflyEffect or @trackMyFlight or @planMyJourney or @Promotions", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
         butterflyEffectPage = new ButterflyEffectPage(_driver);
         flightsInformationPage = new FlightsInformationPage(_driver);
         planYourJourneyPage = new PlanYourJourneyPage(_driver);
+        promotionsPage = new PromotionsPage(_driver);
+        trackMyFlightPage = new TrackMyFlightPage(_driver);
     }
 
-    @After("@butterflyEffect or @trackMyFlight or @planMyJourney")
+    @After("@butterflyEffect or @trackMyFlight or @planMyJourney or @Promotions")
     public void closeApp() {
         BaseSteps.closeDriver();
     }
 
-    @Before(value = "@butterflyEffect or @trackMyFlight or @planMyJourney", order = 1)
+    @Before(value = "@butterflyEffect or @trackMyFlight or @planMyJourney or @Promotions", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
         BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
     }
@@ -51,6 +54,15 @@ public class HomePageCarouselSlidesSteps {
         butterflyEffectPage.verifyBackButton();
     }
 
+    @Then("click on back icon on the Butterfly Page")
+    public void click_on_back_icon_on_the_Butterfly_Page() {
+        butterflyEffectPage.clickOnBackButton();
+    }
+
+    @And("Verify that the user is redirected to the Home Page")
+    public void Verify_that_the_user_is_redirected_to_the_Home_Page() {
+        homePage.verifyHomePage();
+    }
 
     @And("the user clicks on the here link to navigate to the Register page")
     public void the_user_clicks_on_the_link_to_navigate_to_the_register_page() throws InterruptedException {
@@ -116,10 +128,12 @@ public class HomePageCarouselSlidesSteps {
 
     @And("selects a flight then the user clicks on the Track My Flight button to track the flight")
     public void selects_a_flight() throws InterruptedException {
-        flightsInformationPage.clickOnFlightToTrackTheFlight();
+        flightsInformationPage.clickOnFlight();
+        actualFlightNum = flightsInformationPage.clickOnTrackMyFlight();
         Thread.sleep(3000);
         flightsInformationPage.clickOnBackButton();
     }
+    private String actualFlightNum;
 
     @Then("navigates back to the Home Page")
     public void navigates_back_to_the_home_page() {
@@ -133,7 +147,7 @@ public class HomePageCarouselSlidesSteps {
 
     @Then("verifies that the flight has been added to the My Flights page")
     public void verifies_that_the_flight_has_been_added_to_the_my_flights_page() {
-
+        trackMyFlightPage.verifyFlightNumber(actualFlightNum);
     }
 
     @When("the user clicks on the PLAN MY JOURNEY Carousel card on the Home Page")
@@ -166,15 +180,19 @@ public class HomePageCarouselSlidesSteps {
 
     @Then("click on the Stores, Dining, and Booking Service buttons on the PLAN MY JOURNEY page and verify each button navigates to their individual pages")
     public void click_on_the_stores_dining_and_booking_service_buttons_on_the_plan_my_journey_page_and_verify_each_button_navigates_to_their_individual_pages() {
+//        planYourJourneyPage.verifyLabelExplore();
         planYourJourneyPage.clickOnStores();
         homePage.storesPage().verifyStoresPage();
         homePage.storesPage().clickOnBackIcon();
+        planYourJourneyPage.verifyLabelExplore();
         planYourJourneyPage.clickOnDining();
         homePage.dinningPage().verifyDinningPage();
         homePage.dinningPage().clickOnBackButton();
+        planYourJourneyPage.verifyLabelExplore();
         planYourJourneyPage.clickOnBookingServices();
         homePage.bookingServicePage().verifyBookingServicePage();
         homePage.bookingServicePage().clickOnBackButton();
+        planYourJourneyPage.verifyLabelExplore();
     }
 
     @Then("verify the Share Flight Details button and Remove Flight button are visible on the PLAN MY JOURNEY page")
@@ -200,6 +218,63 @@ public class HomePageCarouselSlidesSteps {
 
     @Then("verify it navigates to the Home Page after clicking the Yes button to remove the flight")
     public void verify_it_navigates_to_the_home_page_after_clicking_the_yes_button_to_remove_the_flight() {
+        homePage.verifyHomePage();
+    }
+
+    @When("the user clicks on the Promotions Carousel card on the Home Page")
+    public void the_user_clicks_on_the_promotions_carousel_card_on_the_home_page() {
+        homePage.clickOnPromotionsCarouselCard();
+    }
+
+    @Then("the user lands on the Promotions page")
+    public void the_user_lands_on_the_promotions_page() {
+        promotionsPage.verifyPromotionsPage();
+    }
+
+    @And("the Search text field and Terminal dropdown is displayed on the Promotions page")
+    public void the_search_text_field_and_terminal_dropdown_is_displayed_on_the_promotions_page() {
+        promotionsPage.verifySearchTextField();
+        promotionsPage.verifyTerminalDropDown();
+    }
+
+    @Then("the user is able to change the Terminal")
+    public void the_user_is_able_to_change_the_terminal() {
+        promotionsPage.clickOnTerminalDropDown();
+        promotionsPage.clickOnTerminal2();
+    }
+
+    @And("the user clicks on any one of the banners on the Promotions page")
+    public void the_user_clicks_on_any_one_of_the_banners_on_the_promotions_page() throws InterruptedException {
+        textFromBanner = promotionsPage.getTextFromBanner();
+        promotionsPage.clickOnBanner();
+    }
+
+    private String textFromBanner;
+
+    @Then("the user navigates to the same Promotions page")
+    public void the_user_navigates_to_the_same_promotions_page() {
+        promotionsPage.verifyBanner(textFromBanner);
+    }
+
+    @And("the back button is displayed on the selected banner page")
+    public void the_back_button_is_displayed_on_the_selected_banner_page() {
+        promotionsPage.verifyBackButtonFromBannerPage();
+    }
+
+    @Then("the user clicks on the back button and navigates to the Promotions page")
+    public void the_user_clicks_on_the_back_button_and_navigates_to_the_promotions_page() {
+        promotionsPage.clickOnBackFromBannerPage();
+        promotionsPage.verifyPromotionsPage();
+    }
+
+    @Then("the back button is displayed on the Promotions page")
+    public void the_back_button_is_displayed_on_the_promotions_page() {
+        promotionsPage.verifyBackButton();
+    }
+
+    @And("the user clicks on the back button from the Promotions page and lands on the Home Page")
+    public void the_user_clicks_on_the_back_button_from_the_promotions_page_and_lands_on_the_home_page() {
+        promotionsPage.clickOnBackButton();
         homePage.verifyHomePage();
     }
 

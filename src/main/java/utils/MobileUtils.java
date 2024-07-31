@@ -132,7 +132,7 @@ public class MobileUtils {
         if (displayed)
             System.out.println(elementName + " is visible");
         else
-            Assert.fail("Element " + elementName + " is not visible");
+            Assert.fail(elementName + " is not visible");
     }
 
     public List<WebElement> getElements(By locator) {

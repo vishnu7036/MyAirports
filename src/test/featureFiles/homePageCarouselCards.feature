@@ -5,6 +5,8 @@ Feature: Verify all carousel slides on the home page
     Given the user selects the Butterfly Effect card from the carousel slides on the home page
     Then the Butterfly Page should be displayed
     And verify the presence of the back icon on the Butterfly Page
+    Then click on back icon on the Butterfly Page
+    And Verify that the user is redirected to the Home Page
 
   @butterflyEffect
   Scenario: verify user successfully Register with Valid credentials using the Butterfly Effect carousel card
@@ -39,5 +41,20 @@ Feature: Verify all carousel slides on the home page
     And verify a confirmation popup is displayed to confirm removal
     Then click on the Yes button to remove the flight from the PLAN MY JOURNEY page
     Then verify it navigates to the Home Page after clicking the Yes button to remove the flight
+
+  @Promotions
+  Scenario: Verify the navigation flow of the Promotions carousel card
+    Given verify the user is on the Home Page
+    When the user clicks on the Promotions Carousel card on the Home Page
+    Then the user lands on the Promotions page
+    And the Search text field and Terminal dropdown is displayed on the Promotions page
+    Then the user is able to change the Terminal
+    And the user clicks on any one of the banners on the Promotions page
+    Then the user navigates to the same Promotions page
+    And the back button is displayed on the selected banner page
+    Then the user clicks on the back button and navigates to the Promotions page
+    Then the back button is displayed on the Promotions page
+    And the user clicks on the back button from the Promotions page and lands on the Home Page
+
 
 

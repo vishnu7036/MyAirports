@@ -214,6 +214,12 @@ public class HomePage extends MobileUtils implements HomePageLoc {
         click(btnCards, "Flights Carousel Card");
     }
 
+    public void clickOnPromotionsCarouselCard() {
+        scrollLeft(500);
+        scrollLeft(500);
+        click(btnCards, "Promotions Card");
+    }
+
 
     public void verifyHomeButton() {
         isElementVisible(btnHome, "Home button");
@@ -269,5 +275,8 @@ public class HomePage extends MobileUtils implements HomePageLoc {
 
     public BookingServicePage bookingServicePage() {
         return new BookingServicePage(_driver);
+    }
+    public void verifyLocation(){
+        
     }
 }

@@ -80,6 +80,11 @@ public class PlanYourJourneyPage extends MobileUtils implements PlanYourJourneyP
         Assert.assertEquals(flightDetails[3], checkInCounter);
     }
 
+    public void verifyLabelExplore() {
+        waitForElementVisibility(lblExplore, "Explore Terminal Tab");
+        isElementVisible(lblExplore, "Explore Terminal Tab");
+    }
+
     public void clickOnStores() {
         try {
             for (int i = 0; i < 6; i++)
@@ -111,8 +116,14 @@ public class PlanYourJourneyPage extends MobileUtils implements PlanYourJourneyP
     }
 
     public void verifyShareFlightDetailsButton() {
-        scrollUp();
-        isElementVisible(btnShareFlightDetails, "Share Flight Details Button");
+        try {
+            Thread.sleep(3000);
+            scrollUp();
+            scrollUp();
+            isElementVisible(btnShareFlightDetails, "Share Flight Details Button");
+        } catch (InterruptedException ignored) {
+
+        }
     }
 
     public void verifyRemoveFlightButton() {

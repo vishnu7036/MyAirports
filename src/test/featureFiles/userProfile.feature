@@ -78,6 +78,24 @@ Feature: User Profile Page Validations
     When the user clicks on the Close icon from the Customer Feedback Page
     Then the user should land back on the User Profile page
 
+    @fileComplaintFromPassenger
+      Scenario: Verifies the File a Complaint button functionality
+      Given the user clicks on the User Profile button on the homepage
+      When the user clicks on the Feedback icon
+      Then the user should land on the Feedback Page
+      And the user clicks on the File a Complaint button
+      Then the user clicks on any one of the terminals on the Terminal Page
+      And verify the user is navigated to Are You a Passenger page
+      And the user clicks on the Yes radio button on the Are You a Passenger page
+      Then verify the user is navigated to the I am a Passenger page
+      And the user selects the International and Departing radio buttons on the I am a Passenger page
+      Then verify the user is navigated to the Complaint Options page
+      And the user selects the Toilets option on the Complaint page
+      Then verify the user lands on the Register Complaint page
+      And the user fills in all mandatory fields on the Register Complaint page
+      Then the user clicks on the Submit button on the Register Complaint page
+      And verify the Complaint Successfully Registered popup
+
   @giveCompliment
   Scenario: User verifies the Give A Compliment button functionality
     Given the user clicks on the User Profile button on the homepage
