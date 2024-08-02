@@ -131,6 +131,7 @@ public class PlanYourJourneyPage extends MobileUtils implements PlanYourJourneyP
     }
 
     public void clickOnRemoveFlightButton() {
+        scrollUp();
         click(btnRemoveFlight, "Remove Flight");
     }
 

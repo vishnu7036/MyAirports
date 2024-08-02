@@ -33,28 +33,7 @@ public class ButterflyEffectPage extends MobileUtils implements ButterflyEffectP
     }
 
     public void clickOnHereHyperlink() {
-//        click(lnkHere, "Here Link");
-//        WebElement ele = _driver.findElement(By.xpath("//*[@text='Click here to register.']"));
-//        ele.findElement(By.xpath("//*[contains(@text,'here')]")).click();
-
-        WebElement element = _driver.findElement(By.xpath("//*[@text='Click here to register.']"));
-
-        // Get the element's location and size
-        int startX = element.getLocation().getX();
-        int startY = element.getLocation().getY();
-        int width = element.getSize().getWidth();
-        int height = element.getSize().getHeight();
-
-        // Calculate the approximate tap coordinates for the "here" text
-        int tapX = startX + (int) (width * 0.35); // Adjust the multiplier based on the position of "here"
-        int tapY = startY + (int) (height * 0.5); // Adjust if necessary
-
-        System.out.println("Tap Coordinates: (" + tapX + ", " + tapY + ")");
-
-        // Perform the tap action
-        new TouchAction(_driver)
-                .tap(TapOptions.tapOptions().withPosition(PointOption.point(tapX, tapY)))
-                .perform();
+        clickElementWithPointOptions(lnkHere, 0.20, 0.50);
     }
 
     public ButterflyEffectGuestRegistrationPage butterflyEffectGuestRegistrationPage() {

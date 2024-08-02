@@ -4,6 +4,8 @@ import io.appium.java_client.android.AndroidDriver;
 import pages.pageLocators.ButterflyEffectGuestRegistrationPageLoc;
 import utils.MobileUtils;
 
+import java.time.LocalDate;
+
 public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements ButterflyEffectGuestRegistrationPageLoc {
     private AndroidDriver _driver;
 
@@ -43,7 +45,12 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
         scrollUp();
         click(txtDateOfVisit, "Date of visit");
         hideKeyboard();
-        click(btnCurrentDate, "Selected current Date");
+        LocalDate date = LocalDate.now();
+        String[] split = String.valueOf(date).split("-");
+        String dat = split[2];
+        char c= dat.charAt(1);
+        System.out.println(c);
+        click(getCurrentDate(String.valueOf(c)), "Selected current Date");
     }
 
     public void enterPassengerFullName(String text) {

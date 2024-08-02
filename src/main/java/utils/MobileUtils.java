@@ -24,10 +24,10 @@ public class MobileUtils {
     private static final String apiKey = "3y6SX0EZcAgYopLmB6YQj38BghU5QyOm";
     private static final String serverId = "uk90qnfw";
     private static final String serverDomain = "uk90qnfw.mailosaur.net";
-    private final AndroidDriver _driver;
+    private AndroidDriver _driver;
 
     public MobileUtils(AndroidDriver driver) {
-        this._driver = driver;
+        _driver = driver;
     }
 
     public void scrollUp() {
@@ -195,6 +195,17 @@ public class MobileUtils {
 
     public String getText(By locator) {
         return _driver.findElement(locator).getText();
+    }
+
+    public void clickElementWithPointOptions(By by, double eleWidth, double eleHeight) {
+        this.waitForElementVisibility(by, "here link");
+        WebElement ele = _driver.findElement(by);
+        Point loc = ele.getLocation();
+        Dimension fieldSize = ele.getSize();
+        int width = ((int) (fieldSize.getWidth() * eleWidth)) + loc.getX();
+        int height = ((int) (fieldSize.getHeight() * eleHeight)) + loc.getY();
+        TouchAction action = new TouchAction((_driver));
+        action.tap(PointOption.point(width, height)).perform();
     }
 
 }
