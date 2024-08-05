@@ -31,7 +31,7 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
     }
 
     public String enterEmail() {
-        email = getEmailId();
+        email = generateEmailId();
         enterText(getLocatorForText("Email ID"), email, "Email ID text field");
         return email;
     }

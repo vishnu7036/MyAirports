@@ -10,7 +10,6 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -155,7 +154,7 @@ public class MobileUtils {
         this.enterText(locator, text.toLowerCase(), elementName);
     }
 
-    public String getEmailId() {
+    public String generateEmailId() {
         String text = RandomStringUtils.randomAlphabetic(4);
         return text.toLowerCase() + "@" + serverDomain;
     }
