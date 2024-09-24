@@ -38,7 +38,7 @@ public class LoginPageSteps {
     }
     @Before(value = "@login",order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required(){
-        BaseSteps.loginApplication("iotuatproject@gmail.com","Mind@123");
+        BaseSteps.loginApplication("vishnug4881@gmail.com","Test@123");
     }
 
     @Then("the user successfully navigates to the Home page")
@@ -73,7 +73,7 @@ public class LoginPageSteps {
 
     @Then("navigates to the home page with successfully logged out")
     public void navigates_to_the_home_page_with_successfully_logged_out() {
-        homePage.verifyUser("Welcome");
+        homePage.verifyUserName("Welcome");
     }
 
 }

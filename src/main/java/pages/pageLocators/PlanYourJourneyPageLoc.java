@@ -12,9 +12,9 @@ public interface PlanYourJourneyPageLoc {
     By lblTerminal = By.xpath("//*[@text='Terminal']/following-sibling::*[2]");
     By lblCheckInCounter = By.xpath("//*[@text='Check-in Counter']/following-sibling::*[2]");
     By lblExplore = By.xpath("(//*[contains(@text,'Explore')])[1]");
-    By btnStores = By.xpath("//*[@text='Stores']/preceding-sibling::*[3]/*");
-    By btnDinning = By.xpath("//*[@text='Dining']/preceding-sibling::*[3]/*");
-    By btnBookingServices = By.xpath("//*[@text='Booking Services']/preceding-sibling::*[3]/*");
+    By btnStores = By.xpath("//*[@text='Stores']/preceding-sibling::*[3]/*[1]");
+    By btnDinning = By.xpath("//*[@text='Dining']/preceding-sibling::*[3]/*[1]");
+    By btnBookingServices = By.xpath("//*[@text='Booking Services']/preceding-sibling::*[3]/*[1]");
     By btnShareFlightDetails = By.xpath("//*[contains(@text,'Departing')]/../../../../../following-sibling::*[1]");
     By btnRemoveFlight = By.xpath("//*[contains(@text,'Departing')]/../../../../../following-sibling::*[2]");
     By lblRemoveFlight = By.xpath("//*[contains(@text,'Are you sure you want to leave this page?')]");

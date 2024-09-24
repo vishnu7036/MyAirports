@@ -33,7 +33,7 @@ public class HomePageSteps {
 
     @Before(value = "@homePage or @flights or @menu", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
+        BaseSteps.loginApplication("vishnug4881@gmail.com", "Test@123");
     }
 
     @Given("the user is able to view flights, dining, essentials & services, shuttle bus, stores, and customer feedback in the first slide")

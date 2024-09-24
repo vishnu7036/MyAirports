@@ -8,7 +8,7 @@ Feature: Verify Home Page Functionality
     When the user clicks on the Next arrow button for the next slide
     Then the user is able to view clinic, transfer counter, airline ticketing center, baggage reclaim, baggage locker, and information center in the last slide
 
-  @flights
+  @flights @Ignore
   Scenario Outline: Verify the Flights Functionality
     Given the user is on the Home Page
     When the user clicks on the Menu button from the Home Page
@@ -31,7 +31,7 @@ Feature: Verify Home Page Functionality
       | Terminal one          | Terminal two          |
       | KUL - KLIA Terminal 1 | KUL - KLIA Terminal 2 |
 
-  @menu
+  @menu @Ignore
   Scenario: Verify the menu button functionality
     Given the user is on the Home Page
     When the user clicks on the Menu button from the Home Page

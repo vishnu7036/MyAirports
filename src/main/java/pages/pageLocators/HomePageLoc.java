@@ -6,7 +6,7 @@ public interface HomePageLoc {
 
     By imgHome = By.xpath("//*[contains(@text,'Special')]/../preceding-sibling::*/*");
     By btnSpecialAssistance = By.xpath("//*[contains(@text,'Special')]");
-    By lblUser = By.xpath("//*[contains(@text,'Special')]/../following-sibling::*/*[2]");
+    By lblUser = By.xpath("//*[contains(@text,'Special')]/../following-sibling::*/*[3]");
     By lblLocation = By.xpath("//*[contains(@text,'Special')]/../../following-sibling::*[1]/*[1]/*[1]");
 
     default By getTabs(String txt) {

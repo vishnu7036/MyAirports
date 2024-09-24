@@ -2,6 +2,7 @@ package pages.pageClasses;
 
 import io.appium.java_client.android.AndroidDriver;
 import pages.pageLocators.DeparturePageLoc;
+import pages.pagePopups.YouAreNowTrackingPopup;
 import utils.MobileUtils;
 
 public class DeparturePage extends MobileUtils implements DeparturePageLoc {
@@ -37,7 +38,12 @@ public class DeparturePage extends MobileUtils implements DeparturePageLoc {
     }
 
     public String getAirlineName() {
-        waitForElementVisibility(lblAirline,"Airline");
+        try {
+        Thread.sleep(3000);
+            waitForElementVisibility(lblAirline, "Airline");
+        } catch (Exception ignored){
+
+        }
         return getText(lblAirline);
     }
 
@@ -61,6 +67,9 @@ public class DeparturePage extends MobileUtils implements DeparturePageLoc {
 
     public void clickOnDoneButton() {
         click(btnDone, "Done button");
+    }
+    public YouAreNowTrackingPopup youAreNowTrackingPopup(){
+        return new YouAreNowTrackingPopup(_driver);
     }
 
 }

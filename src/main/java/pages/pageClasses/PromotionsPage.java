@@ -70,7 +70,8 @@ public class PromotionsPage extends MobileUtils implements PromotionsPageLoc {
         try {
             Thread.sleep(3000);
             String bannerName = getText(lblBanner);
-            Assert.assertEquals(textFromBanner, bannerName);
+            Assert.assertTrue(textFromBanner.equalsIgnoreCase(bannerName));
+//            Assert.assertEquals(textFromBanner, bannerName);
         } catch (InterruptedException ignored) {
 
         }

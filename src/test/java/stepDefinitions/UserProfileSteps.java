@@ -52,7 +52,7 @@ public class UserProfileSteps {
 
     @Before(value = "@camera or @password or @contactUs or @editProfile or @favourites or @customerFeedback or @giveCompliment or @makeSuggestion or @fileComplaintFromPassenger", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
+        BaseSteps.loginApplication("vishnug4881@gmail.com", "Test@123");
     }
 
     @Given("the user clicks on the User Profile button on the homepage")
@@ -101,9 +101,9 @@ public class UserProfileSteps {
 
     @And("the user enters the Current Password, New Password, and Re-enter Password for password change")
     public void the_user_enters_the_current_password_new_password_and_re_enter_password_for_password_change() {
-        changePasswordPage.enterCurrentPassword("Mind@123");
-        changePasswordPage.enterNewPassword("Test@123");
-        changePasswordPage.enterReEnterNewPassword("Test@123");
+        changePasswordPage.enterCurrentPassword("Test@123");
+        changePasswordPage.enterNewPassword("Mind@123");
+        changePasswordPage.enterReEnterNewPassword("Mind@123");
     }
 
     @Then("the user clicks on the Save button")
@@ -128,8 +128,8 @@ public class UserProfileSteps {
     @And("the user logs in again with the new password")
     public void the_user_logs_in_again_with_the_new_password() {
         homePage.clickOnUserAccount();
-        loginPage.enterEmailID("iotuatproject@gmail.com");
-        loginPage.enterPassword("Test@123");
+        loginPage.enterEmailID("vishnug4881@gmail.com");
+        loginPage.enterPassword("Mind@123");
         loginPage.clickOnSubmitButton();
         loginPage.clickOnSubmitButton();
     }
@@ -141,9 +141,9 @@ public class UserProfileSteps {
         homePage.clickOnUserAccount();
         userProfilePage.clickOnSettings();
         settingsPage.clickOnChangePassword();
-        changePasswordPage.enterCurrentPassword("Test@123");
-        changePasswordPage.enterNewPassword("Mind@123");
-        changePasswordPage.enterReEnterNewPassword("Mind@123");
+        changePasswordPage.enterCurrentPassword("Mind@123");
+        changePasswordPage.enterNewPassword("Test@123");
+        changePasswordPage.enterReEnterNewPassword("Test@123");
         changePasswordPage.clickOnSaveButton();
         changePasswordPage.clickOnSaveButton();
         changePasswordPage.verifyPasswordChangeSuccessfullyPopup();

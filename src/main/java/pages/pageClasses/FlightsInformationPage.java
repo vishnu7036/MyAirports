@@ -141,9 +141,12 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
 
     public String clickOnTrackMyFlight() throws InterruptedException {
         String flightNum = departurePage().getFlightNumber();
+        System.out.println(flightNum);
         departurePage().clickOnTrackMyFlight();
-        departurePage().verifyYouAreNoeTrackingPopup();
-        departurePage().clickOnDoneButton();
+        departurePage().youAreNowTrackingPopup().verifyHeading();
+        departurePage().youAreNowTrackingPopup().enterEmail();
+        departurePage().youAreNowTrackingPopup().clickOnTermsAndConditionsCheckBox();
+        departurePage().youAreNowTrackingPopup().clickOnSubmitButton();
         Thread.sleep(3000);
         departurePage().clickOnBackButton();
         Thread.sleep(3000);
@@ -159,17 +162,19 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
         while (!found) {
             List<WebElement> list = _driver.findElements(lblFlightStatus);
             list.remove(list.size() - 1);
+            list.remove(0);
             for (WebElement ele : list) {
-                String text = ele.getText();
-                if (!text.contains("CLOSED") && !text.contains("DEPART")) {
+                String text = ele.getText().replace("\n", " ").trim();
+                System.out.println(text);
+                if (!text.equalsIgnoreCase("GATE CLOSED") && !text.equalsIgnoreCase("FLIGHT DEPART")) {
                     ele.click();
-                    Thread.sleep(3000);
                     found = true;
                     break;
                 }
             }
             if (!found) {
                 scrollUp();
+                Thread.sleep(2500);
             }
         }
     }
@@ -202,10 +207,11 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
         while (!found) {
             List<WebElement> list = _driver.findElements(lblFlightStatus);
             list.remove(list.size() - 1);
+            list.remove(0);
             for (WebElement ele : list) {
-                Thread.sleep(1000);
-                String text = ele.getText();
-                if (!text.contains("CLOSED") && !text.contains("DEPART")) {
+                String text = ele.getText().replace("\n", " ").trim();
+                System.out.println(text);
+                if (!text.equalsIgnoreCase("GATE CLOSED") && !text.equalsIgnoreCase("FLIGHT DEPART")) {
                     ele.click();
                     Thread.sleep(3000);
                     flightNumber = departurePage().getFlightNumber();
@@ -213,14 +219,13 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
                     boardingGate = departurePage().getBoardingGate();
                     checkInCounter = departurePage().getCheckInCounter();
                     departurePage().clickOnTrackMyFlight();
-//                    departurePage().verifyYouAreNoeTrackingPopup();
-//                    departurePage().clickOnDoneButton();
                     found = true;
                     break;
                 }
             }
             if (!found) {
                 scrollUp();
+                Thread.sleep(2500);
             }
         }
         return new String[]{flightNumber, terminal, boardingGate, checkInCounter};

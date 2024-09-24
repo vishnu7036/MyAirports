@@ -82,7 +82,6 @@ public class PlanYourJourneyPage extends MobileUtils implements PlanYourJourneyP
 
     public void verifyLabelExplore() {
         waitForElementVisibility(lblExplore, "Explore Terminal Tab");
-        isElementVisible(lblExplore, "Explore Terminal Tab");
     }
 
     public void clickOnStores() {

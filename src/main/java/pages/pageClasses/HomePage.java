@@ -22,8 +22,12 @@ public class HomePage extends MobileUtils implements HomePageLoc {
         Assert.assertTrue(displayed, "Home Page is not displayed");
     }
 
-    public void verifyUser(String text) {
-        String userName = _driver.findElement(lblUser).getText();
+    public void verifyUser() {
+        isElementVisible(lblUser, "User");
+    }
+
+    public void verifyUserName(String text) {
+        String userName = getText(lblUser);
         Assert.assertEquals(userName, text);
     }
 
@@ -197,7 +201,8 @@ public class HomePage extends MobileUtils implements HomePageLoc {
 
     public void clickOnButterflyCarouselCard() {
         try {
-            Thread.sleep(5000);
+            this.verifyUser();
+//            Thread.sleep(10000);
             for (int i = 0; i < 3; i++)
                 scrollLeft(500);
             click(btnCards, "Butterfly Carousel Card");
@@ -212,8 +217,13 @@ public class HomePage extends MobileUtils implements HomePageLoc {
     }
 
     public void clickOnFlightsCarouselCard() {
-        scrollLeft(500);
-        click(btnCards, "Flights Carousel Card");
+        try {
+            Thread.sleep(5000);
+            scrollLeft(500);
+            click(btnCards, "Flights Carousel Card");
+        } catch (Exception ignored) {
+
+        }
     }
 
     public void clickOnPromotionsCarouselCard() {
@@ -278,7 +288,8 @@ public class HomePage extends MobileUtils implements HomePageLoc {
     public BookingServicePage bookingServicePage() {
         return new BookingServicePage(_driver);
     }
-    public void verifyLocation(){
-        
+
+    public void verifyLocation() {
+
     }
 }

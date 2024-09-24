@@ -20,9 +20,9 @@ import java.util.List;
 
 public class MobileUtils {
     private final int default_timeout = 60;
-    private static final String apiKey = "3y6SX0EZcAgYopLmB6YQj38BghU5QyOm";
-    private static final String serverId = "uk90qnfw";
-    private static final String serverDomain = "uk90qnfw.mailosaur.net";
+    private static final String apiKey = "gNZc7Jaa9eye4aWusofBpPT157qj3H5g";
+    private static final String serverId = "ebsg9iwy";
+    private static final String serverDomain = "ebsg9iwy.mailosaur.net";//he-horse@ebsg9iwy.mailosaur.net
     private AndroidDriver _driver;
 
     public MobileUtils(AndroidDriver driver) {
@@ -120,7 +120,7 @@ public class MobileUtils {
             Thread.sleep(1000);
             if (_driver.isKeyboardShown())
                 _driver.hideKeyboard();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
     }

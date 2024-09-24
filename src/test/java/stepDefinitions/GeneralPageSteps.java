@@ -30,7 +30,7 @@ public class GeneralPageSteps {
 
     @Before(value = "@general", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication("iotuatproject@gmail.com","Mind@123");
+        BaseSteps.loginApplication("vishnug4881@gmail.com","Test@123");
     }
 
     @Given("the user clicks on the user account from the homepage")

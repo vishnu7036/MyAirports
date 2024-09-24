@@ -18,8 +18,9 @@ public class TrackMyFlightPage extends MobileUtils implements TrackMyFlightPageL
         return getText(lblFlightNum);
     }
 
-    public void verifyFlightNumber(String actualFlightNum) {
+    public void verifyFlightNumber(String actualFlightNum) throws InterruptedException {
 //        String actualFlightNum = flightsInformationPage().getFlightNumberFromDepartureFlight();
+        Thread.sleep(8000);
         String expFlightNum = getFlightNumberFromFlightsCarouselCard();
         Assert.assertEquals(actualFlightNum, expFlightNum);
     }

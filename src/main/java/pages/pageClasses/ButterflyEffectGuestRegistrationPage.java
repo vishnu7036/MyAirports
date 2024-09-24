@@ -45,12 +45,8 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
         scrollUp();
         click(txtDateOfVisit, "Date of visit");
         hideKeyboard();
-        LocalDate date = LocalDate.now();
-        String[] split = String.valueOf(date).split("-");
-        String dat = split[2];
-        char c= dat.charAt(1);
-        System.out.println(c);
-        click(getCurrentDate(String.valueOf(c)), "Selected current Date");
+        String date = String.valueOf(LocalDate.now()).split("-")[2];
+        click(getCurrentDate(date), "Selected current Date");
     }
 
     public void enterPassengerFullName(String text) {

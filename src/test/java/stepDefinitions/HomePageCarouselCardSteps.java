@@ -20,7 +20,7 @@ public class HomePageCarouselCardSteps {
 
     @Before(value = "@butterflyEffect or @trackMyFlight or @planMyJourney or @Promotions", order = 0)
     public void init() throws MalformedURLException {
-        _driver = BaseSteps.getDriver();
+        this._driver = BaseSteps.getDriver();
         homePage = new HomePage(_driver);
         butterflyEffectPage = new ButterflyEffectPage(_driver);
         flightsInformationPage = new FlightsInformationPage(_driver);
@@ -36,7 +36,7 @@ public class HomePageCarouselCardSteps {
 
     @Before(value = "@butterflyEffect or @trackMyFlight or @planMyJourney or @Promotions", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication("iotuatproject@gmail.com", "Mind@123");
+        BaseSteps.loginApplication("vishnug4881@gmail.com", "Test@123");
     }
 
     @Given("the user selects the Butterfly Effect card from the carousel slides on the home page")
@@ -146,7 +146,7 @@ public class HomePageCarouselCardSteps {
     }
 
     @Then("verifies that the flight has been added to the My Flights page")
-    public void verifies_that_the_flight_has_been_added_to_the_my_flights_page() {
+    public void verifies_that_the_flight_has_been_added_to_the_my_flights_page() throws InterruptedException {
         trackMyFlightPage.verifyFlightNumber(actualFlightNum);
     }
 
