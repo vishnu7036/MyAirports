@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 //        features = {"src/test/featureFiles"},
-        features = {
-                "src/test/featureFiles/homePageCarouselCards.feature"},
+        features = {"src/test/featureFiles/homePageCarouselCards.feature"},
         glue = {"stepDefinitions"},
         monochrome = true,
         plugin = {"pretty",
