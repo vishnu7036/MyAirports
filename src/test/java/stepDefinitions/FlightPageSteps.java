@@ -7,25 +7,18 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import pages.pageClasses.*;
 import pages.pagePopups.ChooseAirportPopup;
+import utils.PageObjectManager;
 
 import java.net.MalformedURLException;
 
 public class FlightPageSteps {
     private AndroidDriver _driver;
-    private HomePage homePage;
-    private FlightsInformationPage flightsInformationPage;
-    private ChooseAirportPopup chooseAirport;
-    private DeparturePage departurePage;
-    private ArrivalPage arrivalPage;
+    private PageObjectManager pm;
 
     @Before(value = "@flight", order = 0)
     public void init() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
-        homePage = new HomePage(_driver);
-        flightsInformationPage = new FlightsInformationPage(_driver);
-        chooseAirport = new ChooseAirportPopup(_driver);
-        departurePage = new DeparturePage(_driver);
-        arrivalPage = new ArrivalPage(_driver);
+        pm = new PageObjectManager(_driver);
     }
 
     @After("@flight")
@@ -35,71 +28,71 @@ public class FlightPageSteps {
 
     @Before(value = "@flight", order = 1)
     public void login_Into_Application_And_Enable_Location_If_Required() {
-        BaseSteps.loginApplication("vishnug4881@gmail.com", "Test@123");
+        BaseSteps.loginApplication();
     }
 
     @Then("click on the Flights icon in the landing page")
     public void click_on_the_flights_icon_in_the_landing_page() {
-        homePage.clickOnFlightsIcon();
+        pm.homePage().clickOnFlightsIcon();
     }
 
     @Then("click on Arrival toggle button in the FLIGHT INFORMATION page")
     public void click_on_arrival_toggle_button_in_the_flight_information_page() {
-        flightsInformationPage.verifyFlightsInformationPage();
-        flightsInformationPage.clickOnArrivalToggle();
+        pm.flightsInformationPage().verifyFlightsInformationPage();
+        pm.flightsInformationPage().clickOnArrivalToggle();
     }
 
     @And("click on Departure toggle button in the FLIGHT INFORMATION page")
     public void click_on_departure_toggle_button_in_the_flight_information_page() throws InterruptedException {
-        flightsInformationPage.clickOnDepartureToggle();
+        pm.flightsInformationPage().clickOnDepartureToggle();
     }
 
     @Then("change the terminal by clicking on dropdown button")
     public void change_the_terminal_by_clicking_on_dropdown_button() {
-        flightsInformationPage.clickOnDropDownChooseAirport();
-        chooseAirport.verifyChooseAirportPopup();
-        chooseAirport.selectAirportByText("KLIA Terminal 2");
+        pm.flightsInformationPage().clickOnDropDownChooseAirport();
+        pm.chooseAirportPopup().verifyChooseAirportPopup();
+        pm.chooseAirportPopup().selectAirportByText("KLIA Terminal 2");
     }
 
     @And("select any flight from available flights for Departure")
     public void select_any_flight_from_available_flights_for_departure() {
-        flightsInformationPage.selectFlightFromDeparture();
+        pm.flightsInformationPage().selectFlightFromDeparture();
     }
 
     @Then("click back arrow in Departure page")
     public void click_back_arrow_in_departure_page() {
-        departurePage.verifyDeparturePage();
-        departurePage.clickOnBackButton();
+        pm.departurePage().verifyDeparturePage();
+        pm.departurePage().clickOnBackButton();
     }
 
     @Then("select any flight from available flights for Arrival")
     public void select_any_flight_from_available_flights_for_arrival() {
-        flightsInformationPage.selectFlightFromArrival();
+        pm.flightsInformationPage().selectFlightFromArrival();
     }
 
     @And("verify the Note message in Arrival page")
     public void verify_the_note_message_in_arrival_page() {
-        arrivalPage.verifyArrivalPage();
-        arrivalPage.verifyNote();
+        pm.arrivalPage().verifyArrivalPage();
+        pm.arrivalPage().verifyNote();
     }
 
     @Then("click back arrow in Arrival page")
     public void click_back_arrow_in_arrival_page() {
-        arrivalPage.clickOnBackButton();
+        pm.arrivalPage().clickOnBackButton();
     }
 
     @Then("click on the Get previous Flights link User can see accordingly")
     public void click_on_the_get_previous_flights_link_user_can_see_accordingly() {
-        flightsInformationPage.clickOnGetPreviousFlights();
+        pm.flightsInformationPage().clickOnGetPreviousFlights();
     }
 
     @And("click on back arrow in FLIGHT INFORMATION page")
     public void click_on_back_arrow_in_flight_information_page() {
-        flightsInformationPage.clickOnBackButton();
+        pm.flightsInformationPage().clickOnBackButton();
     }
 
     @Then("close the mobile app")
     public void close_the_mobile_app() {
-        homePage.verifyHomePage();
+        pm.homePage().verifyHomePage();
     }
 }
