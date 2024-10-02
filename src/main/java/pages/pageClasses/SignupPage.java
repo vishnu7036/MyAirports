@@ -58,7 +58,8 @@ public class SignupPage extends MobileUtils implements SignupPageLoc {
 
     public void clickOnCreateAccountBtn() {
         try {
-            scrollUp();
+            scrollToElement("CREATE ACCOUNT");
+//            scrollUp();
             Thread.sleep(1500);
             click(getLocatorForButton("CREATE ACCOUNT"), "Create Account button");
             boolean displayed = _driver.findElement(verifyEmailPage().lblHeading).isDisplayed();
