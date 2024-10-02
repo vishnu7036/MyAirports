@@ -10,8 +10,8 @@ public interface ButterflyEffectGuestRegistrationPageLoc {
     By txtAirline = By.xpath("//*[@text='Airline']/following-sibling::*[1]");
     By txtFlightNumber = By.xpath("//*[@resource-id='edit-flight-number']");
     By txtDateOfVisit = By.xpath("//*[@resource-id='edit-date-of-visit']");
-    default By getCurrentDate(String date){
-        return By.xpath(String.format("//*[@text='%s']",date));
+    default By getCurrentDate(String date, String dat){
+        return By.xpath(String.format("//*[@text='%s' or @text='%s']",date, dat));
     }
     By btnCurrentDate = By.xpath("(//*[contains(@class,'TextView')])[2]");
     By txtPassengerFullName = By.xpath("//*[@resource-id='edit-passenger-full-name']");
