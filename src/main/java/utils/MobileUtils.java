@@ -3,6 +3,7 @@ package utils;
 import com.mailosaur.MailosaurClient;
 import com.mailosaur.MailosaurException;
 import com.mailosaur.models.*;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -29,6 +30,9 @@ public class MobileUtils {
         _driver = driver;
     }
 
+    public void scrollToElement(String text){
+        _driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\"))"));
+    }
     public void scrollUp() {
         int width = _driver.manage().window().getSize().getWidth();
         int height = _driver.manage().window().getSize().getHeight();

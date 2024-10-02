@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 //        features = {"src/test/featureFiles"},
-        features = {"src/test/featureFiles/flightsPage.feature"},
+        features = {"src/test/featureFiles/signupPage.feature"},
         glue = {"stepDefinitions"},
         monochrome = true,
         plugin = {"pretty",

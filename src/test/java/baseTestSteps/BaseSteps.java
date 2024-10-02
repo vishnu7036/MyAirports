@@ -31,9 +31,9 @@ public class BaseSteps {
     public static AndroidDriver getDriver() throws MalformedURLException {
         dir = System.getProperty("user.dir");
 
-        service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//Mind-Graph//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
-                .withIPAddress("127.0.0.1").usingPort(4723).build();
-        service.start();
+//        service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//Mind-Graph//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
+//                .withIPAddress("127.0.0.1").usingPort(4723).build();
+//        service.start();
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 6 pro API 30");
@@ -54,8 +54,8 @@ public class BaseSteps {
     public static void closeDriver() {
         if (driver != null)
             driver.quit();
-        if (service != null)
-            service.stop();
+//        if (service != null)
+//            service.stop();
     }
 
     public static void loginApplication() {
