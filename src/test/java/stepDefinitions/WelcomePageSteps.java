@@ -6,18 +6,18 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import pages.pageClasses.WelcomePage;
+import utils.*;
 
 import java.net.MalformedURLException;
 
 public class WelcomePageSteps {
     private AndroidDriver _driver;
-    private WelcomePage welcomePage;
+    private PageObjectManager pm;
 
     @Before(value = "@welcome", order = 0)
     public void launchApplication() throws MalformedURLException {
         _driver = BaseSteps.getDriver();
-        welcomePage = new WelcomePage(_driver);
+        pm = new PageObjectManager(_driver);
     }
 
     @After
@@ -27,57 +27,57 @@ public class WelcomePageSteps {
 
     @Given("the user launches the application")
     public void the_user_launches_the_application() {
-        welcomePage.verifyWelcomePage();
+        pm.welcomePage().verifyWelcomePage();
     }
 
     @Then("the user should be able to view the Malaysia Airports logo")
     public void the_user_should_be_able_to_view_the_malaysia_airports_logo() {
-        welcomePage.verifyWelcomePageLogo();
+        pm.welcomePage().verifyWelcomePageLogo();
     }
 
     @And("the user should initially see all buttons and links in English language")
     public void the_user_should_initially_see_all_buttons_and_links_in_english_language() {
-        welcomePage.verifyDefaultEnglishLnkSelected();
+        pm.welcomePage().verifyDefaultEnglishLnkSelected();
     }
 
     @When("the user clicks on BAHASA MALAYSIA in the Welcome Page")
     public void the_user_clicks_on_bahasa_malaysia_in_the_welcome_page() {
-        welcomePage.clickOnMalaysiaLink();
+        pm.welcomePage().clickOnMalaysiaLink();
     }
 
     @And("verifies that the app language changes in MALAYSIA language")
     public void verifies_that_the_app_language_changes_in_malaysia_language() {
-        welcomePage.verifyChangeLanguageTextInMalaysianLanguage();
-        welcomePage.verifyLoginOrSingUpLinkTextInMalaysianLanguage();
-        welcomePage.verifyGuestLinkTextInMalaysianLanguage();
-        welcomePage.verifyEnglishLinkTextInEnglish();
-        welcomePage.verifyChineseLinkTextInChinese();
+        pm.welcomePage().verifyChangeLanguageTextInMalaysianLanguage();
+        pm.welcomePage().verifyLoginOrSingUpLinkTextInMalaysianLanguage();
+        pm.welcomePage().verifyGuestLinkTextInMalaysianLanguage();
+        pm.welcomePage().verifyEnglishLinkTextInEnglish();
+        pm.welcomePage().verifyChineseLinkTextInChinese();
     }
 
     @Then("the user clicks on CHINESE in the Welcome Page")
     public void the_user_clicks_on_chinese_in_the_welcome_page() {
-        welcomePage.clickOnChineseLink();
+        pm.welcomePage().clickOnChineseLink();
     }
 
     @And("verifies that the app language changes in CHINESE language")
     public void verifies_that_the_app_language_changes_in_chinese_language() {
-        welcomePage.verifyChangeLanguageTextInChineseLanguage();
-        welcomePage.verifyLoginOrSingUpLinkTextInChineseLanguage();
-        welcomePage.verifyGuestLinkTextInChineseLanguage();
+        pm.welcomePage().verifyChangeLanguageTextInChineseLanguage();
+        pm.welcomePage().verifyLoginOrSingUpLinkTextInChineseLanguage();
+        pm.welcomePage().verifyGuestLinkTextInChineseLanguage();
     }
 
     @And("the user clicks on ENGLISH in the Welcome Page")
     public void the_user_clicks_on_english_in_the_welcome_page() {
-        welcomePage.clickOnEnglishTextInChinese();
+        pm.welcomePage().clickOnEnglishTextInChinese();
     }
 
     @Then("verifies that the app language changes in ENGLISH language")
     public void verifies_that_the_app_language_changes_in_english_language() {
-        welcomePage.verifyChangeLanguageTextInEnglishLanguage();
-        welcomePage.verifyLoginOrSingUpLinkTextInEnglishLanguage();
-        welcomePage.verifyGuestLinkTextInEnglishLanguage();
-        welcomePage.verifyMalaysiaLinkTextInMalaysia();
-        welcomePage.verifyChineseLinkTextInChinese();
+        pm.welcomePage().verifyChangeLanguageTextInEnglishLanguage();
+        pm.welcomePage().verifyLoginOrSingUpLinkTextInEnglishLanguage();
+        pm.welcomePage().verifyGuestLinkTextInEnglishLanguage();
+        pm.welcomePage().verifyMalaysiaLinkTextInMalaysia();
+        pm.welcomePage().verifyChineseLinkTextInChinese();
     }
 
 }

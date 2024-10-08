@@ -24,7 +24,8 @@ public class LoginPage extends MobileUtils implements LoginPageLoc {
 
     public void clickOnSignUpBtn() {
         verifyLoginPage();
-        scrollUp();
+        scrollToElement("SIGN UP");
+//        scrollUp();
         click(btnSignup, "Sign Up button");
     }
 

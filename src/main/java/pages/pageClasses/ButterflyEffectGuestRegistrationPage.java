@@ -46,7 +46,8 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
         click(txtDateOfVisit, "Date of visit");
         hideKeyboard();
         String date = String.valueOf(LocalDate.now()).split("-")[2];
-        click(getCurrentDate(date), "Selected current Date");
+        String dat = String.valueOf(date.charAt(1));
+        click(getCurrentDate(dat,date), "Selected current Date");
     }
 
     public void enterPassengerFullName(String text) {
