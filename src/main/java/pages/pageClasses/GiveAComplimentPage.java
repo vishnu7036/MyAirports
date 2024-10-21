@@ -6,6 +6,7 @@ import utils.CommonFunctions;
 import utils.MobileUtils;
 
 public class GiveAComplimentPage extends MobileUtils implements GiveAComplimentPageLoc {
+
     private final AndroidDriver _driver;
 
     public GiveAComplimentPage(AndroidDriver driver) {

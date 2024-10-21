@@ -7,7 +7,7 @@ import pages.pagePopups.LocationPopup;
 import utils.CommonFunctions;
 import utils.MobileUtils;
 
-public class LoginPage extends MobileUtils implements LoginPageLoc {
+public class LoginPage extends MobileUtils  implements LoginPageLoc {
 
     private AndroidDriver _driver;
 

@@ -21,9 +21,9 @@ import java.util.List;
 
 public class MobileUtils {
     private final int default_timeout = 60;
-    private static final String apiKey = "gNZc7Jaa9eye4aWusofBpPT157qj3H5g";
-    private static final String serverId = "ebsg9iwy";
-    private static final String serverDomain = "ebsg9iwy.mailosaur.net";//he-horse@ebsg9iwy.mailosaur.net
+    private static final String apiKey = "6RiX0Czf5TNTKiGuRBlGQS87siijkepw";
+    private static final String serverId = "ftfdwl0t";
+    private static final String serverDomain = "ftfdwl0t.mailosaur.net";//he-horse@ebsg9iwy.mailosaur.net
     private AndroidDriver _driver;
 
     public MobileUtils(AndroidDriver driver) {

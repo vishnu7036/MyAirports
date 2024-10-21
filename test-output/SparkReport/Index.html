@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Mindgraph Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Oct 2, 2024 03:21:41 pm</span></a>
+<a href="#"><span class="badge badge-primary">Oct 18, 2024 11:51:11 am</span></a>
 </li>
 </ul>
 </div>
@@ -71,13 +71,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Oct 2, 2024 03:21:41 pm</h3>
+<h3>Oct 18, 2024 11:51:11 am</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Oct 2, 2024 03:22:43 pm</h3>
+<h3>Oct 18, 2024 11:53:01 am</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -148,10 +148,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='27%'><b>3</b> steps passed</small></div>
+<div><small data-tooltip='63%'><b>7</b> steps passed</small></div>
 <div>
 <small data-tooltip='9%'><b>1</b> steps failed,
-<b>7</b> skipped, <b data-tooltip='%'>0</b> others
+<b>3</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -167,7 +167,7 @@
 </div></div>
 <script>
 var timeline = {
-"User Signup Process":59.84
+"User Signup Process":108.353
 };
 </script>
 <div class="row">
@@ -230,10 +230,10 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 3,
+passGrandChild: 7,
 failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 7,
+skipGrandChild: 3,
 infoGrandChild: 0,
 eventsCount: 5,
 };
@@ -268,7 +268,7 @@ eventsCount: 5,
           <div class="test-detail">
             <p class="name">User Signup Process</p>
             <p class="text-sm">
-              <span>3:21:44 pm</span> / <span>00:00:59:840</span>
+              <span>11:51:13 am</span> / <span>00:01:48:353</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -277,9 +277,9 @@ eventsCount: 5,
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">User Signup Process</h5>
-<span class='badge badge-success'>10.02.2024 3:21:44 pm</span>
-<span class='badge badge-danger'>10.02.2024 3:22:43 pm</span>
-<span class='badge badge-default'>00:00:59:840</span>
+<span class='badge badge-success'>10.18.2024 11:51:13 am</span>
+<span class='badge badge-danger'>10.18.2024 11:53:01 am</span>
+<span class='badge badge-default'>00:01:48:353</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -312,55 +312,39 @@ eventsCount: 5,
       <div>
       </div>
               </div>
-              <div class="step fail-bg" title="stepDefinitions.SignupPageSteps.proceeds_to_the_signup_page_by_clicking_on_the_signup_button()">
+              <div class="step pass-bg" title="stepDefinitions.SignupPageSteps.proceeds_to_the_signup_page_by_clicking_on_the_signup_button()">
                 <span>Then proceeds to the Signup page by clicking on the signup button</span>
       <div>
-        <textarea disabled class="code-block">org.openqa.selenium.UnsupportedCommandException: The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [e17458c4-a8dc-41d7-8492-b0b726b0459b, performTouchAction {actions=[{action=longPress, options={x=540, y=1200}}, {action=moveTo, options={x=540, y=240}}, {action=release, options={}}]}]
-Capabilities {appium:app: C:\Users\Mind-Graph\IdeaPro..., appium:appPackage: klia.mahb.ios, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {app: C:\Users\Mind-Graph\IdeaPro..., automationName: UIAutomator2, deviceName: Pixel 6 pro API 30, platformName: ANDROID, platformVersion: Android 11, udid: emulator-5554}, appium:deviceApiLevel: 33, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86_64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 420, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.625, appium:platformVersion: 13, appium:statBarHeight: 128, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2272, left: 0, top: 128, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: e17458c4-a8dc-41d7-8492-b0b726b0459b
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:675)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:308)
-	at io.appium.java_client.PerformsTouchActions.performTouchAction(PerformsTouchActions.java:54)
-	at io.appium.java_client.TouchAction.perform(TouchAction.java:196)
-	at utils.MobileUtils.scrollUp(MobileUtils.java:42)
-	at pages.pageClasses.LoginPage.clickOnSignUpBtn(LoginPage.java:27)
-	at stepDefinitions.SignupPageSteps.proceeds_to_the_signup_page_by_clicking_on_the_signup_button(SignupPageSteps.java:49)
-	at ✽.proceeds to the Signup page by clicking on the signup button(file:///C:/Users/Mind-Graph/IdeaProjects/MyAirports_Duplicate/MyAirports/src/test/featureFiles/signupPage.feature:8)
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefinitions.SignupPageSteps.the_user_is_prompted_to_enter_their_FirstName_LastName_EmailID_and_Password()">
+                <span>And the user is prompted to enter their First Name, Last Name, Email ID, and Password</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefinitions.SignupPageSteps.the_user_fills_in_the_required_information()">
+                <span>Then clicks on the Create Account button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefinitions.SignupPageSteps.the_user_navigates_to_verify_Email_page()">
+                <span>And the user navigates to verify Email page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepDefinitions.SignupPageSteps.enter_OTP_and_click_on_submit_button_to_create_a_new_account()">
+                <span>Then enter OTP and click on submit button to create a new account</span>
+      <div>
+        <textarea disabled class="code-block">com.mailosaur.MailosaurException: Authentication failed, check your API key.
+	at com.mailosaur.MailosaurClient.request(MailosaurClient.java:193)
+	at com.mailosaur.Messages.search(Messages.java:320)
+	at com.mailosaur.Messages.get(Messages.java:55)
+	at utils.MobileUtils.getOTPFromEmail(MobileUtils.java:176)
+	at pages.pageClasses.SignupPage.getOTP(SignupPage.java:92)
+	at stepDefinitions.SignupPageSteps.enter_OTP_and_click_on_submit_button_to_create_a_new_account(SignupPageSteps.java:73)
+	at ✽.enter OTP and click on submit button to create a new account(file:///C:/Users/Mind-Graph/IdeaProjects/MyAirports_Duplicate/MyAirports/src/test/featureFiles/signupPage.feature:12)
 </textarea>
       
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.SignupPageSteps.the_user_is_prompted_to_enter_their_FirstName_LastName_EmailID_and_Password()">
-                <span>And the user is prompted to enter their First Name, Last Name, Email ID, and Password</span>
-      <div>Step skipped
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.SignupPageSteps.the_user_fills_in_the_required_information()">
-                <span>Then clicks on the Create Account button</span>
-      <div>Step skipped
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.SignupPageSteps.the_user_navigates_to_verify_Email_page()">
-                <span>And the user navigates to verify Email page</span>
-      <div>Step skipped
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.SignupPageSteps.enter_OTP_and_click_on_submit_button_to_create_a_new_account()">
-                <span>Then enter OTP and click on submit button to create a new account</span>
-      <div>Step skipped
       </div>
               </div>
               <div class="step skip-bg" title="stepDefinitions.SignupPageSteps.the_user_account_is_successfully_created()">
@@ -425,7 +409,7 @@ Session ID: e17458c4-a8dc-41d7-8492-b0b726b0459b
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:21:44 pm</td>
+<td>11:51:13 am</td>
 <td>
 <a href="#" class="linked" test-id='1' id='2'>Signup with Valid Information</a>
 <div class="">
@@ -458,12 +442,12 @@ Session ID: e17458c4-a8dc-41d7-8492-b0b726b0459b
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">org.openqa.selenium.UnsupportedCommandException</p>
+<p class="name">com.mailosaur.MailosaurException</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>org.openqa.selenium.UnsupportedCommandException</h4>
+<h4>com.mailosaur.MailosaurException</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -477,11 +461,11 @@ Session ID: e17458c4-a8dc-41d7-8492-b0b726b0459b
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:22:40 pm</td>
+<td>11:52:58 am</td>
 <td>
-<a href="#" class="linked" test-id='1' id='7'>Then proceeds to the Signup page by clicking on the signup button</a>
+<a href="#" class="linked" test-id='1' id='11'>Then enter OTP and click on submit button to create a new account</a>
 <div class="">
-<span class="badge badge-default">User Signup Process.Signup with Valid Information.Then proceeds to the Signup page by clicking on the signup button</span>
+<span class="badge badge-default">User Signup Process.Signup with Valid Information.Then enter OTP and click on submit button to create a new account</span>
 </div>
 </td>
 </tr>

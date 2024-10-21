@@ -15,7 +15,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
-/*
+
+/**
 If you are starting the appium server programmatically then the URL should be "http://127.0.0.1:4723"
 If you are starting the appium server manually through Desktop/cmd then the URL should be "http://127.0.0.1:4723/wd/hub"
  */
@@ -41,9 +42,9 @@ public class BaseSteps {
         options.setUdid("emulator-5554");
         options.setPlatformName("Android");
         options.setPlatformVersion("Android 11");
-//        URL url = new URL("http://127.0.0.1:4723/wd/hub");
+        URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
-        URL url = new URL("http://127.0.0.1:4723");
+//        URL url = new URL("http://127.0.0.1:4723");
         driver = new AndroidDriver(url, options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time_out));
