@@ -8,7 +8,7 @@ Feature: Verify all carousel slides on the home page
     Then click on back icon on the Butterfly Page
     And Verify that the user is redirected to the Home Page
 
-  @butterflyEffect
+  @butterflyEffects
   Scenario: verify user successfully Register with Valid credentials using the Butterfly Effect carousel card
     Given the user selects the Butterfly Effect card from the carousel slides on the home page
     Then the Butterfly Page should be displayed

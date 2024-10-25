@@ -32,4 +32,7 @@ public class YouAreNowTrackingPopup extends MobileUtils implements YouAreNowTrac
 
         }
     }
+    public void clickOnDoneButton(){
+        click(btnDone,"Done Button");
+    }
 }

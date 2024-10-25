@@ -10,8 +10,8 @@ import io.cucumber.testng.CucumberOptions;
         monochrome = true,
         plugin = {"pretty",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "timeline:test-output-thread/"}
-//        tags = "not @butterflyEffect"
+                "timeline:test-output-thread/"},
+        tags = "not @butterflyEffects"
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 

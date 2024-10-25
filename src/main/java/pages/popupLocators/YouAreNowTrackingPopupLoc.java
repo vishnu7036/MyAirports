@@ -8,4 +8,5 @@ public interface YouAreNowTrackingPopupLoc {
     By chckbxTerms = By.xpath("//*[contains(@text,'Terms & Conditions')]/../preceding-sibling::*[1]");
     By btnSkip = By.xpath("//*[@text='SKIP']");
     By btnSubmit = By.xpath("//*[@text='SUBMIT']");
+    By btnDone = By.xpath("//*[@text='DONE']");
 }

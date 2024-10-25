@@ -144,10 +144,11 @@ public class FlightsInformationPage extends MobileUtils implements FlightsInform
         System.out.println(flightNum);
         departurePage().clickOnTrackMyFlight();
         departurePage().youAreNowTrackingPopup().verifyHeading();
-        departurePage().youAreNowTrackingPopup().enterEmail();
-        departurePage().youAreNowTrackingPopup().clickOnTermsAndConditionsCheckBox();
-        departurePage().youAreNowTrackingPopup().clickOnSubmitButton();
-        Thread.sleep(3000);
+        departurePage().youAreNowTrackingPopup().clickOnDoneButton();
+//        departurePage().youAreNowTrackingPopup().enterEmail();
+//        departurePage().youAreNowTrackingPopup().clickOnTermsAndConditionsCheckBox();
+//        departurePage().youAreNowTrackingPopup().clickOnSubmitButton();
+//        Thread.sleep(3000);
         departurePage().clickOnBackButton();
         Thread.sleep(3000);
         return flightNum;

@@ -8,8 +8,8 @@ public interface CustomerFeedbackPageLoc {
     By btnFileComplaint = By.xpath("//*[@text='File a Complaint']");
     By btnMakeSuggestion = By.xpath("//*[@text='Make a Suggestion']");
     By btnGiveComplaint = By.xpath("//*[@text='Give a Compliment']");
-    By btnPrevious = By.xpath("//*[@text='Previous']");
-    By btnNext = By.xpath("//*[@text='Next']");
+        By btnPrevious = By.xpath("//*[@text='Previous' or @text='PREVIOUS']");
+    By btnNext = By.xpath("//*[@text='Next' or @text='NEXT']");
     By lblTerminal = By.xpath("//*[contains(@text,'terminal')]");
     By lblPassenger = By.xpath("//*[contains(@text,'passenger?')]");
     By radBtnYes = By.xpath("//*[@text='Yes']/preceding-sibling::*[1]/*[1]");

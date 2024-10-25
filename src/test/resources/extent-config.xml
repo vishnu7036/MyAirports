@@ -18,7 +18,7 @@
         <documentTitle>My Airports</documentTitle>
 
         <!-- report name - displayed at top-nav -->
-        <reportName>Mindgraph Report</reportName>
+        <reportName>MAGP Report</reportName>
 
         <!-- location of charts in the test view -->
         <!-- top, bottom -->

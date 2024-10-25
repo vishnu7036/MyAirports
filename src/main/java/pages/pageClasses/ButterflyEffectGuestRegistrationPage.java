@@ -23,12 +23,12 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
     }
 
     public void clickOnAirportDropDown() {
-        isElementVisible(ddAirport, "");
+        scrollToElement("Date of Visit");
         click(ddAirport, "Airport dropdown");
     }
 
     public void clickOnAirport() {
-        click(radBtnAirport, "Airport Radio button");
+        click(ddOptionAirport, "Airport Radio button");
     }
 
     public void enterAirline(String text) {
@@ -42,7 +42,6 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
 
     public void enterDateOfVisit() {
         hideKeyboard();
-        scrollUp();
         click(txtDateOfVisit, "Date of visit");
         hideKeyboard();
         String date = String.valueOf(LocalDate.now()).split("-")[2];
@@ -51,6 +50,7 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
     }
 
     public void enterPassengerFullName(String text) {
+        scrollToElement("Gender");
         enterText(txtPassengerFullName, text, "Passenger Full Name text field");
     }
 
@@ -61,12 +61,12 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
 
     public void clickOnPassengerPassportIssueCountryDropDown() {
         hideKeyboard();
-        scrollUp();
+        scrollToElement("NRIC / Passport Issuing Country");
         click(ddPassengerPassportIssueCountry, "Passenger Passport Issuing Country drop down");
     }
 
     public void clickOnPassengerPassportIssueCountry() {
-        click(radBtnPassengerPassportIssueCountry, "Passenger Passport Issuing Country Radio button");
+        click(ddOptionsPassengerPassportIssueCountry, "Passenger Passport Issuing Country Radio button");
     }
 
     public void enterPassengerAge(String text) {
@@ -79,11 +79,11 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
     }
 
     public void clickOnPassengerGender() {
-        click(radBtnGender, "Airport Radio button");
+        click(ddOptionPassengerGender, "Airport Radio button");
     }
 
     public void enterParentFullName(String text) {
-        scrollUp();
+        scrollToElement("Full Name");
         enterText(txtParentFullName, text, "Parent Full Name text field");
     }
 
@@ -98,11 +98,11 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
     }
 
     public void clickOnParentPassportIssueCountry() {
-        click(radBtnParentPassportIssueCountry, "Parent Passport Issuing Country Radio button");
+        click(ddOptionsParentPassportIssueCountry, "Parent Passport Issuing Country Radio button");
     }
 
     public void enterParentContactNumber(String text) {
-        scrollUp();
+        scrollToElement("Contact Number");
         enterText(txtParentContactNum, text, "Parent contact number text field");
     }
 
@@ -123,7 +123,7 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
 
     public void enterPostalCode(String text) {
         hideKeyboard();
-        scrollUp();
+        scrollToElement("ZIP/Postal Code");
         enterText(txtPostalCode, text, "Postal code text field");
     }
 
@@ -133,11 +133,11 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
     }
 
     public void clickOnCountry() {
-        click(radBtnCountry, "Country Radio button");
+        click(ddOptionCountry, "Country Radio button");
     }
 
     public void enterEmailAddress(String text) {
-        scrollUp();
+        scrollToElement("Email Address");
         enterText(txtEmailAddress, text, "Email Address");
     }
 
@@ -154,9 +154,7 @@ public class ButterflyEffectGuestRegistrationPage extends MobileUtils implements
     }
 
     public void clickOnRegister() {
-        scrollUp();
-        scrollUp();
-        scrollUp();
+        scrollToElement("Register");
         click(btnRegister, "Register button");
     }
 
